@@ -2,27 +2,42 @@ package lab2.model;
 
 public final class Graph {
 
-    private AdjacentMatrix adjacentmatrix;
+	private AdjacentMatrix adjacentMatrix;
 
 	public Graph(int n) {
 		super();
-        this.adjacentmatrix = new AdjacentMatrix(n);
-	}
-	
-	//shallow copy
-	public Graph(Graph graph) {
-        this.adjacentmatrix = AdjacentMatrix.copy(graph.adjacentmatrix);
+		adjacentMatrix = new AdjacentMatrix(n);
 	}
 
     public AdjacentMatrix getAdjacentMatrix(){
-        return adjacentmatrix;
-    }
+        return adjacentMatrix;
+	}
+
+	public int getAdjacentmatrixIndex(int x, int y) {
+		return adjacentMatrix.get(x, y);
+	}
+
+	public void setAdjacentmatrixIndex(int x, int y, int value) {
+		adjacentMatrix.set(x, y, value);
+	}
+
+	public String printAdjacentmatrix() {
+		String tmp = "";
+		for (int i = 0; i < adjacentMatrix.size(); i++) {
+			for(int j = 0; j < i + 1; j++)
+				tmp += 0 + "\t";
+			for (int j = i + 1; j < adjacentMatrix.size(); j++)
+				tmp += adjacentMatrix.get(i, j) + "\t";
+			tmp += "\n";
+		}
+		return tmp;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adjacentmatrix == null) ? 0 : adjacentmatrix.hashCode());
+		result = prime * result + ((adjacentMatrix == null) ? 0 : adjacentMatrix.hashCode());
 		return result;
 	}
 
@@ -35,15 +50,15 @@ public final class Graph {
 		if (getClass() != obj.getClass())
 			return false;
 		Graph other = (Graph) obj;
-		if (adjacentmatrix == null) {
-			if (other.adjacentmatrix!= null)
+		if (adjacentMatrix == null) {
+			if (other.adjacentMatrix != null)
 				return false;
-		} else if (!adjacentmatrix.equals(other.adjacentmatrix))
+		} else if (!adjacentMatrix.equals(other.adjacentMatrix))
 			return false;
 		return true;
 	}
 
 	public int getDimension() {
-		return adjacentmatrix.size();
+		return adjacentMatrix.size();
 	}
 }

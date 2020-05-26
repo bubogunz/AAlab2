@@ -53,7 +53,7 @@ public class AdjacentMatrix{
     }
 
     public Integer size(){
-        return matrix.size();
+        return matrix.size() + 1;
     }
 
     public static AdjacentMatrix copy(AdjacentMatrix m){

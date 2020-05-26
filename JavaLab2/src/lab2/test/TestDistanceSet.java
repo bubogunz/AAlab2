@@ -5,7 +5,7 @@ import java.util.TreeSet;
 import lab2.model.DistanceSet;
 
 public class TestDistanceSet {
-    public static void test(){
+    public static void test() throws InterruptedException {
         DistanceSet matrix = new DistanceSet(5);
         System.out.println(matrix);
         
@@ -15,11 +15,12 @@ public class TestDistanceSet {
             v.add(i);
         TreeSet<Integer> tmp_v = (TreeSet<Integer>) v.clone();
         tmp_v.remove(0);
-        
-        System.out.println(v);
-        System.out.println(tmp_v);
 
         matrix.setDistance(0, tmp_v, 3);
-        System.out.println(matrix.getDistance(0, tmp_v));
+        matrix.setDistance(1, tmp_v, 5);
+        
+        System.out.println("Matrice inizializzata:\n" + matrix);
+        System.out.println("d[0, v]: " + matrix.getDistance(0, tmp_v));
+        System.out.println("d[1, v\\{0}]: " + matrix.getDistance(1, tmp_v));
     }
 }

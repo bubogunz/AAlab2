@@ -1,5 +1,6 @@
 package lab2.model;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.TreeSet;
@@ -7,16 +8,19 @@ import java.util.TreeSet;
 public class DistanceSet {
     private Integer[][] matrix;
     private ArrayList<TreeSet<Integer>> sets;
-    int final_distance;
+    private Integer final_distance;
 
     public DistanceSet(int n){
+        //nella matrice non considero il vertice 0, perciò
+        //la mia matrice avrà lunghezza n - 1
         int[] tmp = new int[n - 1];
         sets = new ArrayList<TreeSet<Integer>>();
+        //tmp contiene i vertici da 1 a n
         for(int i = 0; i < n - 1; i++)
             tmp[i] = i + 1;
         for(int i = 2; i < n; i++)
             createCombinations(tmp, tmp.length, i);
-        matrix = new Integer[n][sets.size()];
+        matrix = new Integer[n - 1][sets.size()];
     }
 
     private void combinationUtil(int arr[], int data[], int start, 
@@ -41,24 +45,25 @@ public class DistanceSet {
         combinationUtil(arr, data, 0, n-1, 0, r); 
     }
 
-    public Integer getDistance(int u, TreeSet<Integer> S){
+    public Integer getDistance(int u, TreeSet<Integer> S)throws InterruptedException{
         int y = sets.indexOf(S);
-        if(y == -1)
-            return -1;
         if(u == 0)
             return final_distance;
-        return matrix[u][y];
+        if(y == -1 || u < 0 || u > matrix.length)
+            throw new InvalidParameterException("Wrong vertex or set parameter. SetIndex: " + y + "/" + sets.size() + " Vertex: " + u + "/" + matrix.length);
+        return matrix[u - 1][y];
     }
 
-    public void setDistance(int u, TreeSet<Integer> S, int value){
+    public void setDistance(int u, TreeSet<Integer> S, int value) throws InterruptedException{
         int y = sets.indexOf(S);
-        if(y == -1)
-            return;
         if(u == 0){
             final_distance = value;
             return;
         }
-        matrix[u][y] = value;
+        if(y == -1 || u < 0 || u > matrix.length)
+            throw new InvalidParameterException("Wrong vertex or set parameter. SetIndex: " + y + "/" + sets.size() + " Vertex: " + u + "/" + matrix.length);
+        matrix[u - 1][y] = value;
+        return;
     }
 
     @Override
@@ -84,11 +89,12 @@ public class DistanceSet {
             tmp += sets.get(i).toString() + "\t";
         tmp += "\n";
         for(int i = 0; i < matrix.length; i++){
-            tmp += i + "\t";
+            tmp += (i + 1) + "\t";
             for(int j = 0; j < matrix[0].length; j++)
                 tmp += matrix[i][j] + "\t";
             tmp += "\n";
         }
+        tmp += "d[0, V]: " + final_distance;
         return tmp;
     }
 

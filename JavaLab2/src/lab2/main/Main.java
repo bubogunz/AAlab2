@@ -13,15 +13,15 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import lab2.model.AdjacentMatrix;
+import lab2.algorithm.TSP;
 import lab2.model.Distancies;
 import lab2.model.Graph;
 import lab2.test.TestDistanceSet;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
-		// compute("TSP"); 
-		test();
+		compute("TSP"); 
+		// test();
 	}
 
 	/**
@@ -60,8 +60,9 @@ public class Main {
 
 			System.out.println("Executing " + algorithm + " algorithm");
 
-			tsp_dataset.stream().forEach(entryset -> {
+			// tsp_dataset.stream().forEach(entryset -> {
 				try {
+					String entryset = tsp_dataset.get(5);
 					System.out.println("Input: " + entryset);
 					int cost = 0;
 					String buffer = new String("File:" + entryset + "\n");
@@ -73,9 +74,10 @@ public class Main {
 					while(myReader.hasNextLine() && !line.split(" ")[0].equals("DIMENSION:"))
 						line = myReader.nextLine();
 					Integer size_graph = Integer.valueOf(line.split(" ")[1]);
-					System.out.println("Spia");
 					
 					Graph graph = new Graph(size_graph);
+					//ESEMPIO del pdf
+					// Graph graph = new Graph(size_graph);
 					double[][] nodes = new double[size_graph][2];
 
 					line = myReader.nextLine();
@@ -92,26 +94,32 @@ public class Main {
 					}
 
 					myReader.close();
-
-					AdjacentMatrix matrix = graph.getAdjacentMatrix();
+					
+					//ESEMPIO del pdf (commentare però il for)
+					// graph.setAdjacentmatrixIndex(0, 1, 4);
+					// graph.setAdjacentmatrixIndex(0, 2, 1);
+					// graph.setAdjacentmatrixIndex(0, 3, 3);
+					// graph.setAdjacentmatrixIndex(1, 2, 2);
+					// graph.setAdjacentmatrixIndex(1, 3, 1);
+					// graph.setAdjacentmatrixIndex(2, 3, 5);
 					for(int i = 0; i < size_graph; i++)
 						for(int j = i + 1; j < size_graph; j++){
 							switch (mode){
 								case "EUC_2D":
-									matrix.set(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+									graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
 									break;
 								case "GEO":
-									matrix.set(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+									graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
 									break;
 								default:
 							}
 						}
 
-					// System.out.println(matrix);
+					// System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
 					long start = System.nanoTime();
 					switch (algorithm){
 						case "TSP":
-							cost = 0;
+							cost = TSP.HeldKarp(graph);
 							break;
 						case "Heuristic":
 							cost = 0;
@@ -123,19 +131,11 @@ public class Main {
 							throw new InvalidParameterException("Wrong choice of algorithm");	
 					}
 
-					long stop = System.nanoTime();
-
-					long timeElapsed = stop - start;
-					double time = timeElapsed;
-					time = time / 1000000000;
-					buffer += "MST costs " + cost + "\n";
-					buffer += "Time elapsed: " + time + " s\n\n";
-					fw.write(buffer);
+					System.out.println(cost);
 
 				} catch (FileNotFoundException e) {
-				} catch (IOException e) {
 				}
-			 });
+			//  });
 			fw.close();
 			System.out.println("Finish!");
 			// test(algorithm);
@@ -145,7 +145,7 @@ public class Main {
 		}
 	}
 
-	static void test(){
+	static void test() throws InterruptedException {
 		TestDistanceSet.test();
 	}
 }
