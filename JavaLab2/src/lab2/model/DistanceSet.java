@@ -1,6 +1,7 @@
 package lab2.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.TreeSet;
 
 public class DistanceSet {
@@ -59,4 +60,36 @@ public class DistanceSet {
         }
         matrix[u][y] = value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof DistanceSet)) {
+            return false;
+        }
+        DistanceSet distanceSet = (DistanceSet) o;
+        return Objects.equals(matrix, distanceSet.matrix) && Objects.equals(sets, distanceSet.sets) && final_distance == distanceSet.final_distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(matrix, sets, final_distance);
+    }
+
+    @Override
+    public String toString() {
+        String tmp = "\t";
+        for(int i = 0; i < sets.size(); i++)
+            tmp += sets.get(i).toString() + "\t";
+        tmp += "\n";
+        for(int i = 0; i < matrix.length; i++){
+            tmp += i + "\t";
+            for(int j = 0; j < matrix[0].length; j++)
+                tmp += matrix[i][j] + "\t";
+            tmp += "\n";
+        }
+        return tmp;
+    }
+
 }

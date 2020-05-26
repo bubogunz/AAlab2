@@ -16,11 +16,12 @@ import java.util.stream.Stream;
 import lab2.model.AdjacentMatrix;
 import lab2.model.Distancies;
 import lab2.model.Graph;
+import lab2.test.TestDistanceSet;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
-		compute("TSP"); 
-//		test("prim");
+		// compute("TSP"); 
+		test();
 	}
 
 	/**
@@ -142,5 +143,9 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	static void test(){
+		TestDistanceSet.test();
 	}
 }
