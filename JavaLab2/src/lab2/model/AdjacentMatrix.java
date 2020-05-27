@@ -28,9 +28,9 @@ public class AdjacentMatrix{
         /*questo decremento è dovuto al fatto che, immaginando la matrice,
         la prima colonna ha tutti valori nulli, e dunque nella matrice costruita non viene
         contata, dunque si decrementa il valore delle colonne della matrce*/
-        m--;
+//        m--;
         try{
-            matrix.get(m).set(n, v);
+            matrix.get(--m).set(n, v);
         }catch(IndexOutOfBoundsException e ){
             System.out.println("Selected a loop edge or out of bound endge");
         }
@@ -43,9 +43,9 @@ public class AdjacentMatrix{
             n = m;
             m = tmp;
         }
-        m--;
+//        m--;
         try{
-            return matrix.get(m).get(n);
+            return matrix.get(--m).get(n);
         }catch(IndexOutOfBoundsException e ){
             System.out.println("Selected a loop edge or out of bound edge");
         }
