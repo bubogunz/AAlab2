@@ -24,14 +24,18 @@ import java.util.stream.Stream;
 import lab2.algorithm.TSP;
 import lab2.model.Distancies;
 import lab2.model.Graph;
+import lab2.test.TestAdjacentMatrix;
+import lab2.test.TestCheapestInsertion;
 import lab2.test.TestDistanceSet;
+import lab2.test.TestKruskal;
+import lab2.test.TestTSP;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		//dare l'opzione -Xmx8192m per dire alla JVM di riservare 8GB di RAM (serve a HeldKarp) 
 //		printHeapInfo();
 		
-		compute("TSP"); 
+		compute("Heuristic"); 
 		// test();
 	}
 
@@ -76,13 +80,13 @@ public class Main {
 
 			switch (algorithm) {
 			case "TSP":
-				outputPath = new File("TSP.xml");
+				outputPath = new File("TSP.txt");
 				break;
 			case "Heuristic":
-				outputPath = new File("Heuristic.xml");
+				outputPath = new File("Heuristic.txt");
 				break;
 			case "2Approx":
-				outputPath = new File("2Approx.xml");
+				outputPath = new File("2Approx.txt");
 				break;
 			default:
 				throw new InvalidParameterException("Wrong choice of algorithm");
@@ -93,8 +97,10 @@ public class Main {
 			System.out.println("Executing " + algorithm + " algorithm");
 
 			// tsp_dataset.stream().forEach(entryset -> {
+			for(int k = 0; k < tsp_dataset.size(); k++){
 			try {
-				String entryset = tsp_dataset.get(12);
+				int example = k;
+				String entryset = tsp_dataset.get(example);
 				System.out.println("Input: " + entryset);
 				int cost = 0;
 				String buffer = new String("File:" + entryset + "\n");
@@ -102,6 +108,7 @@ public class Main {
 				File myObj = new File(entryset);
 				Scanner myReader = new Scanner(myObj);
 				String line = myReader.nextLine();
+				String name = line.split(" ")[1];
 
 				while(myReader.hasNextLine() && !line.split(" ")[0].equals("DIMENSION:"))
 					line = myReader.nextLine();
@@ -147,19 +154,19 @@ public class Main {
 					for(int j = i + 1; j < size_graph; j++){
 						switch (mode){
 						case "EUC_2D":
-							graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+							graph.setAdjacentmatrixWeight(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
 							break;
 						case "GEO":
-							graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+							graph.setAdjacentmatrixWeight(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
 							break;
 						default:
 						}
 					}
 				}
-				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
+				// System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
 				
 				switch (algorithm){
-				case "TSP":
+					case "TSP":
 					TSP tsp = new TSP(graph);
 					
 					ExecutorService executor = Executors.newCachedThreadPool();
@@ -181,18 +188,18 @@ public class Main {
 					cost = tsp.getResult();
 					break;
 				case "Heuristic":
-					cost = 0;
+					cost = TSP.CheapestInsertion(graph);
 					break;
 				case "2Approx":
-					cost = 0;
+					cost = TSP.Tree_TSP(graph);
 					break;
 				default:
 					throw new InvalidParameterException("Wrong choice of algorithm");	
 				}
 				
-				System.out.println(cost);
-
-			} catch (FileNotFoundException e) {
+				fw.write(name + " " + cost + "\n");
+				TestTSP.test(algorithm, example, cost, graph.getDimension());
+			} catch (FileNotFoundException e) {}
 			}
 			//  });
 			fw.close();
@@ -205,7 +212,10 @@ public class Main {
 	}
 
 	static void test() throws InterruptedException {
-		TestDistanceSet.test();
+		// TestDistanceSet.test();
+		// TestAdjacentMatrix.test();
+		// TestKruskal.test();
+		TestCheapestInsertion.test();
 	}
 	
 //	public static int binomialCoefficient(int n, int k) {

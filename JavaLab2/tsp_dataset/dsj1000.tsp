@@ -1,4 +1,4 @@
-NAME : dsj1000
+NAME: dsj1000
 COMMENT : Clustered random problem (Johnson)
 TYPE : TSP
 DIMENSION: 1000

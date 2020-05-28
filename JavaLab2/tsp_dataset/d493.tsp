@@ -1,4 +1,4 @@
-NAME : d493
+NAME: d493
 COMMENT : Drilling problem (Reinelt)
 TYPE : TSP
 DIMENSION: 493

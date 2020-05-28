@@ -47,14 +47,56 @@ public class AdjacentMatrix{
         return matrix.size() + 1;
     }
 
+    public Integer getMaxAdjacentVertexWeightIndex(int n){
+        Integer max = -1;
+        for(int i = 0; i < size(); i++){
+            Integer tmp = get(n, i);
+            if(tmp != null && i != n && tmp > max)
+                max = i;
+        }
+        if(max == -1)
+            return null;
+        return max;
+    }
+
+    public Integer getMinAdjacentVertexWeightIndex(int n){
+        Integer min = Integer.MAX_VALUE;
+        for(int i = 0; i < size(); i++){
+            Integer tmp = get(n, i); 
+            if(tmp != null && n != i && tmp < min)
+                min = i;
+        }
+        if(min == Integer.MAX_VALUE)
+            return null;
+        return min;
+    }
+
+    public ArrayList<Edge> getEdges(){
+        ArrayList<Edge> result = new ArrayList<Edge>();
+        for(int i = 1; i < size(); i++)
+            for(int j = 0; j < i; j++)
+                result.add(new Edge(j, i, get(j, i)));
+
+        return result;
+    }
+
+    public static AdjacentMatrix copy(AdjacentMatrix m){
+        AdjacentMatrix tmp = new AdjacentMatrix(m.size());
+        for(int i = 0; i < m.size(); i++){
+            ArrayList<Integer> row = new ArrayList<Integer>(i + 1);
+            tmp.matrix.add(row);
+            for(int j = 0; j < i + 1; j++)
+                row.add(m.get(i + 1, j));
+        }
+        return tmp;
+    }
+
     @Override
     public String toString(){
         String tmp = "";
-        for(int i = 0; i < matrix.size(); i++){
-            for(int j = 0; j < i + 1; j++)
-                tmp += 0 + "\t";
-            for(int j = i + 1; j < matrix.size(); j++)
-                tmp += matrix.get(j).get(i) + "\t";
+        for(int i = 0; i < size(); i++){
+            for(int j = 0; j < size(); j++)
+                tmp += get(i, j) + "\t";
             tmp += "\n";
         }
         return tmp;

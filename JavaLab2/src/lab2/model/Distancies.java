@@ -2,8 +2,8 @@ package lab2.model;
 
 public class Distancies {
     public static Integer euclidean(double xa, double ya, double xb, double yb){
-    	// +0.5 perché bisogna arrotondare all'intero più vicino (vedi note dell'homework)
-        return new Integer((int) (Math.sqrt(Math.pow(xa - xb, 2) - Math.pow(ya - yb, 2)) + 0.5));
+    	// +0.5 perchï¿½ bisogna arrotondare all'intero piï¿½ vicino (vedi note dell'homework)
+        return Integer.valueOf((int) (Math.sqrt(Math.pow(xa - xb, 2) - Math.pow(ya - yb, 2)) + 0.5));
     }
 
     public static Integer geo(double xa, double ya, double xb, double yb){
