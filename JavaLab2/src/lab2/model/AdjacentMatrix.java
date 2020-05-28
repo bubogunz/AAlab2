@@ -4,67 +4,58 @@ import java.util.ArrayList;
 
 public class AdjacentMatrix{
     private ArrayList<ArrayList<Integer>> matrix;
+    private int size;
     
     public AdjacentMatrix(int n){
         matrix = new ArrayList<ArrayList<Integer>>();
+        size = n;
         /*dato che la matrice è quatrada e il grafo non orientato,
         creo una matrice quatrata trinagolare superiore inizializzando i valori a null
         tale matrice è costruita con arraylist di valore sempre più grande*/
-        for(int i = 0; i < n - 1; i++){
-            ArrayList<Integer> row = new ArrayList<Integer>(i + 1);
-            matrix.add(row);
-            for(int j = 0; j < i + 1; j++)
-                row.add(null);
+//        for(int i = 0; i < n - 1; i++){
+//            ArrayList<Integer> row = new ArrayList<Integer>(i + 1);
+//            matrix.add(row);
+//            for(int j = 0; j < i + 1; j++)
+//                row.add(null);
+//        }
+        n--;
+        for(int i=0; i<n; ++i) {
+        	ArrayList<Integer> row = new ArrayList<Integer>(n - i);
+        	for(int j=0; j<n-i; ++j) {
+        		row.add(null);
+        	}
+        	matrix.add(row);
         }
+        System.out.println();
     }
 
     public void set(int n, int m, int v){
-        //impongo che n sia minore di m
-        if(n > m){
-            int tmp = n;
-            n = m;
-            m = tmp;
-        }
-        /*questo decremento è dovuto al fatto che, immaginando la matrice,
-        la prima colonna ha tutti valori nulli, e dunque nella matrice costruita non viene
-        contata, dunque si decrementa il valore delle colonne della matrce*/
-//        m--;
-        try{
-            matrix.get(--m).set(n, v);
-        }catch(IndexOutOfBoundsException e ){
-            System.out.println("Selected a loop edge or out of bound endge");
-        }
+    	if(n != m) {
+    		if(n > m)
+    			setUtil(m, n, v);
+    		else
+    			setUtil(n, m, v);
+    	}
+    }
+    
+    private void setUtil(int n, int m, int v) {
+    	matrix.get(n).set(m - (n + 1), v);
     }
 
     public Integer get(int n, int m){
-        //impongo che n sia minore di m
-        if(n > m){
-            int tmp = n;
-            n = m;
-            m = tmp;
-        }
-//        m--;
-        try{
-            return matrix.get(--m).get(n);
-        }catch(IndexOutOfBoundsException e ){
-            System.out.println("Selected a loop edge or out of bound edge");
-        }
-        return null;
+    	if(n == m)
+    		return 0;
+    	return n > m ? getUtil(m, n)
+    			: getUtil(n, m);
+    	
+    }
+    
+    private Integer getUtil(int n, int m) {
+    	return matrix.get(n).get(m - (n+1));
     }
 
     public Integer size(){
         return matrix.size() + 1;
-    }
-
-    public static AdjacentMatrix copy(AdjacentMatrix m){
-        AdjacentMatrix tmp = new AdjacentMatrix(m.size());
-        for(int i = 0; i < m.size(); i++){
-            ArrayList<Integer> row = new ArrayList<Integer>(i + 1);
-            tmp.matrix.add(row);
-            for(int j = 0; j < i + 1; j++)
-                row.add(m.get(i + 1, j));
-        }
-        return tmp;
     }
 
     @Override

@@ -142,7 +142,9 @@ public class Main {
 					}
 				}
 				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
-				System.out.println(graph.getAdjacentMatrix().size());
+				System.out.println(graph.getAdjacentMatrix().get(3, 0));
+				
+//				System.out.println(graph.getAdjacentMatrix().size());
 //				long start = System.nanoTime();
 				
 				switch (algorithm){
