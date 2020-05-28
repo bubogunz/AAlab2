@@ -4,29 +4,18 @@ import java.util.ArrayList;
 
 public class AdjacentMatrix{
     private ArrayList<ArrayList<Integer>> matrix;
-    private int size;
-    
+
     public AdjacentMatrix(int n){
         matrix = new ArrayList<ArrayList<Integer>>();
-        size = n;
-        /*dato che la matrice è quatrada e il grafo non orientato,
-        creo una matrice quatrata trinagolare superiore inizializzando i valori a null
-        tale matrice è costruita con arraylist di valore sempre più grande*/
-//        for(int i = 0; i < n - 1; i++){
-//            ArrayList<Integer> row = new ArrayList<Integer>(i + 1);
-//            matrix.add(row);
-//            for(int j = 0; j < i + 1; j++)
-//                row.add(null);
-//        }
+       
         n--;
         for(int i=0; i<n; ++i) {
         	ArrayList<Integer> row = new ArrayList<Integer>(n - i);
-        	for(int j=0; j<n-i; ++j) {
+        	for(int j=0; j<n-i; ++j) 
         		row.add(null);
-        	}
+        	
         	matrix.add(row);
         }
-        System.out.println();
     }
 
     public void set(int n, int m, int v){
