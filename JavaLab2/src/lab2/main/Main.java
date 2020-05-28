@@ -10,6 +10,14 @@ import java.nio.file.Paths;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -86,7 +94,7 @@ public class Main {
 
 			// tsp_dataset.stream().forEach(entryset -> {
 			try {
-				String entryset = tsp_dataset.get(5);
+				String entryset = tsp_dataset.get(12);
 				System.out.println("Input: " + entryset);
 				int cost = 0;
 				String buffer = new String("File:" + entryset + "\n");
@@ -153,7 +161,24 @@ public class Main {
 				switch (algorithm){
 				case "TSP":
 					TSP tsp = new TSP(graph);
-					cost = tsp.HeldKarp(graph);
+					
+					ExecutorService executor = Executors.newCachedThreadPool();
+					Future<Integer> future  = executor.submit(new Callable<Integer>() {
+						@Override
+						public Integer call() throws Exception {
+							return tsp.HeldKarp(graph);
+						}
+					});
+					//does not brutally shut down the program, it waits until the computation is finished
+					executor.shutdown();
+					
+					Thread.sleep(1000);
+					
+					//Sets the "interrupted flag" that will break computation of the thread gracefully
+					future.cancel(true);
+					executor.awaitTermination(1, TimeUnit.DAYS);
+
+					cost = tsp.getResult();
 					break;
 				case "Heuristic":
 					cost = 0;

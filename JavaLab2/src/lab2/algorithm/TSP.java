@@ -3,6 +3,8 @@ package lab2.algorithm;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import javafx.util.Pair;
 import lab2.model.AdjacentMatrix;
 import lab2.model.Graph;
@@ -11,9 +13,19 @@ public class TSP {
 	private HashMap<Pair<Integer, ArrayList<Integer>>, Integer> d = new HashMap<>();
 	private HashMap<Pair<Integer, ArrayList<Integer>>, Integer> pi = new HashMap<>();
 	private AdjacentMatrix w = null;
+//	private Integer result = new Integer(0);
 
 	public TSP(Graph g) {
 		w = g.getAdjacentMatrix();
+	}
+	
+	public Integer getResult() {
+		ArrayList<Integer> S = new ArrayList<Integer>(w.size()-1);
+		for(int i=1; i<w.size(); ++i) 
+			S.add(i);
+		Pair<Integer, ArrayList<Integer>> key = new Pair<Integer, ArrayList<Integer>>(0, S);
+		Integer res = d.get(key);
+		return res;
 	}
 
 	public Integer HeldKarp(Graph g) {
@@ -57,6 +69,10 @@ public class TSP {
 			if(Integer.sum(dist, w.get(u,v)) < mindist.intValue()) {
 				mindist = new Integer(Integer.sum(dist, w.get(u, v)));
 				minprec = new Integer(u);
+			}
+			if(Thread.currentThread().isInterrupted()) {
+				System.out.println("Timeout reached.");
+				break;
 			}
 		}
 		d.put(index, mindist);
