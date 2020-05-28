@@ -86,7 +86,7 @@ public class Main {
 
 			// tsp_dataset.stream().forEach(entryset -> {
 			try {
-				String entryset = tsp_dataset.get(1);
+				String entryset = tsp_dataset.get(12);
 				System.out.println("Input: " + entryset);
 				int cost = 0;
 				String buffer = new String("File:" + entryset + "\n");
@@ -100,14 +100,21 @@ public class Main {
 				Integer size_graph = Integer.valueOf(line.split(" ")[1]);
 				
 //				ESEMPIO del pdf
-				size_graph = 4;
+//				size_graph = 4;
 				
 				Graph graph = new Graph(size_graph);
 				
 				double[][] nodes = new double[size_graph][2];
 
 				line = myReader.nextLine();
-				String mode = (line.split(" "))[1];
+				String[] modalities = line.split(" ");
+				String mode = "";
+				for(int i=0; i<modalities.length; ++i) {
+					if(modalities[i].equals("EUC_2D"))
+						mode = "EUC_2D";
+					else if(modalities[i].equals("GEO"))
+						mode = "GEO";
+				}
 
 				while(myReader.hasNextLine() && !line.equals("NODE_COORD_SECTION"))
 					line = myReader.nextLine();
@@ -122,26 +129,26 @@ public class Main {
 				myReader.close();
 
 				//ESEMPIO del pdf (commentare però il for)
-									 graph.setAdjacentmatrixIndex(0, 1, 4);
-									 graph.setAdjacentmatrixIndex(0, 2, 1);
-									 graph.setAdjacentmatrixIndex(0, 3, 3);
-									 graph.setAdjacentmatrixIndex(1, 2, 2);
-									 graph.setAdjacentmatrixIndex(1, 3, 1);
-									 graph.setAdjacentmatrixIndex(2, 3, 5);
-//				for(int i = 0; i < size_graph; i++){
-//					for(int j = i + 1; j < size_graph; j++){
-//						switch (mode){
-//						case "EUC_2D":
-//							graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
-//							break;
-//						case "GEO":
-//							graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
-//							break;
-//						default:
-//						}
-//					}
-//				}
-				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
+//									 graph.setAdjacentmatrixIndex(0, 1, 4);
+//									 graph.setAdjacentmatrixIndex(0, 2, 1);
+//									 graph.setAdjacentmatrixIndex(0, 3, 3);
+//									 graph.setAdjacentmatrixIndex(1, 2, 2);
+//									 graph.setAdjacentmatrixIndex(1, 3, 1);
+//									 graph.setAdjacentmatrixIndex(2, 3, 5);
+				for(int i = 0; i < size_graph; i++){
+					for(int j = i + 1; j < size_graph; j++){
+						switch (mode){
+						case "EUC_2D":
+							graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+							break;
+						case "GEO":
+							graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+							break;
+						default:
+						}
+					}
+				}
+//				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
 				
 				switch (algorithm){
 				case "TSP":

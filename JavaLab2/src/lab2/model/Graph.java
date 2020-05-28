@@ -28,7 +28,7 @@ public final class Graph {
 			
 			for(int j = 0; j < adjacentMatrix.size(); j++) 
 				tmp += adjacentMatrix.get(i, j).toString() + "\t ";
-			
+				
 			tmp += "\n";
 		}
 		return tmp;
