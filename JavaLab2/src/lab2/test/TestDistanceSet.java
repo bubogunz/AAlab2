@@ -5,7 +5,8 @@ import java.util.TreeSet;
 import lab2.model.DistanceSet;
 
 public class TestDistanceSet {
-    public static void test() throws InterruptedException {
+    @SuppressWarnings("unchecked")
+	public static void test() throws InterruptedException {
         DistanceSet matrix = new DistanceSet(5);
         System.out.println(matrix);
         

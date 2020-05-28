@@ -22,12 +22,13 @@ public final class Graph {
 	}
 
 	public String printAdjacentmatrix() {
-		String tmp = "";
+		String tmp = new String();
+		
 		for (int i = 0; i < adjacentMatrix.size(); i++) {
-			for(int j = 0; j < i + 1; j++)
-				tmp += 0 + "\t";
-			for (int j = i + 1; j < adjacentMatrix.size(); j++)
-				tmp += adjacentMatrix.get(i, j) + "\t";
+			
+			for(int j = 0; j < adjacentMatrix.size(); j++) 
+				tmp += adjacentMatrix.get(i, j).toString() + "\t ";
+				
 			tmp += "\n";
 		}
 		return tmp;
