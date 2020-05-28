@@ -100,7 +100,7 @@ public class Main {
 				Integer size_graph = Integer.valueOf(line.split(" ")[1]);
 				
 //				ESEMPIO del pdf
-//				size_graph = 4;
+				size_graph = 4;
 				
 				Graph graph = new Graph(size_graph);
 				
@@ -122,30 +122,26 @@ public class Main {
 				myReader.close();
 
 				//ESEMPIO del pdf (commentare però il for)
-//									 graph.setAdjacentmatrixIndex(0, 1, 4);
-//									 graph.setAdjacentmatrixIndex(0, 2, 1);
-//									 graph.setAdjacentmatrixIndex(0, 3, 3);
-//									 graph.setAdjacentmatrixIndex(1, 2, 2);
-//									 graph.setAdjacentmatrixIndex(1, 3, 1);
-//									 graph.setAdjacentmatrixIndex(2, 3, 5);
-				for(int i = 0; i < size_graph; i++){
-					for(int j = i + 1; j < size_graph; j++){
-						switch (mode){
-						case "EUC_2D":
-							graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
-							break;
-						case "GEO":
-							graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
-							break;
-						default:
-						}
-					}
-				}
+									 graph.setAdjacentmatrixIndex(0, 1, 4);
+									 graph.setAdjacentmatrixIndex(0, 2, 1);
+									 graph.setAdjacentmatrixIndex(0, 3, 3);
+									 graph.setAdjacentmatrixIndex(1, 2, 2);
+									 graph.setAdjacentmatrixIndex(1, 3, 1);
+									 graph.setAdjacentmatrixIndex(2, 3, 5);
+//				for(int i = 0; i < size_graph; i++){
+//					for(int j = i + 1; j < size_graph; j++){
+//						switch (mode){
+//						case "EUC_2D":
+//							graph.setAdjacentmatrixIndex(i, j, Distancies.euclidean(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+//							break;
+//						case "GEO":
+//							graph.setAdjacentmatrixIndex(i, j, Distancies.geo(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1]));
+//							break;
+//						default:
+//						}
+//					}
+//				}
 				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
-				System.out.println(graph.getAdjacentMatrix().get(3, 0));
-				
-//				System.out.println(graph.getAdjacentMatrix().size());
-//				long start = System.nanoTime();
 				
 				switch (algorithm){
 				case "TSP":
