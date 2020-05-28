@@ -86,7 +86,7 @@ public class Main {
 
 			// tsp_dataset.stream().forEach(entryset -> {
 			try {
-				String entryset = tsp_dataset.get(12);
+				String entryset = tsp_dataset.get(5);
 				System.out.println("Input: " + entryset);
 				int cost = 0;
 				String buffer = new String("File:" + entryset + "\n");
@@ -148,7 +148,7 @@ public class Main {
 						}
 					}
 				}
-//				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
+				System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
 				
 				switch (algorithm){
 				case "TSP":
