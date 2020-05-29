@@ -1,12 +1,15 @@
 package lab2.test;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.security.InvalidParameterException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class TestTSP {
-    public static void test(String algorithm, int example, int cost, int graphDimension){
+    public static boolean test(String algorithm, int example, int cost, int graphDimension, FileWriter fw){
+        boolean passed = false;
         try {
 			File myObj = new File("solutions.txt");
             Scanner myReader = new Scanner(myObj);
@@ -15,10 +18,9 @@ public class TestTSP {
                 line = myReader.nextLine();
 
             Integer solution = Integer.valueOf(line.split(" ")[1]);
-            boolean passed = false;
 
             switch (algorithm) {
-                case "TSP":
+                case "HeldKarp":
                     if(cost == solution)
                         passed = true;
                     break;
@@ -38,12 +40,16 @@ public class TestTSP {
             if(passed)
                 System.out.println("Test passed!");
             else
-                System.out.println("Test non passed.");
+                System.out.println("Test NOT passed.");
 
             myReader.close();
+            double percent = (cost - solution)/(double) solution * 100;
+            DecimalFormat f = new DecimalFormat("##.00");
+            fw.write(f.format(percent)+ "\n");
             
         } catch (IOException e) {
-			e.printStackTrace();
+            e.printStackTrace();
 		}
+        return passed;
     }
 }

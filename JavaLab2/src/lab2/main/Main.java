@@ -11,13 +11,10 @@ import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -26,7 +23,6 @@ import lab2.model.Distancies;
 import lab2.model.Graph;
 import lab2.test.TestAdjacentMatrix;
 import lab2.test.TestCheapestInsertion;
-import lab2.test.TestDistanceSet;
 import lab2.test.TestKruskal;
 import lab2.test.TestTSP;
 
@@ -35,8 +31,8 @@ public class Main {
 		//dare l'opzione -Xmx8192m per dire alla JVM di riservare 8GB di RAM (serve a HeldKarp) 
 //		printHeapInfo();
 		
-		compute("Heuristic"); 
-		// test();
+		compute("HeldKarp"); 
+		// test("Kruskal");
 	}
 
 	public static void printHeapInfo() {
@@ -62,9 +58,9 @@ public class Main {
 
 	/**
 	 * @param algorithm = the algorithm to compute. This would be:
-	 * - prim -> Prim algorithm with Priority queue data structure
-	 * - naivekruskal -> Naive Kruskal algorithm
-	 * - kruskal -> Kruskal algorithm with DisjoindSet data structure
+	 * - HeldKarp -> HeldKarp algorithm to get correct solution of TSP problem
+	 * - Heuristic -> CheapestInsertion heuristic for nlogn approximation of TSP problem
+	 * - 2Approx -> 2-approximation algorithm using MST structure
 	 * @throws InterruptedException
 	 * 
 	 * This function executes the algorithm choosen in 68 graphs that are
@@ -79,8 +75,8 @@ public class Main {
 			final File outputPath;
 
 			switch (algorithm) {
-			case "TSP":
-				outputPath = new File("TSP.txt");
+			case "HeldKarp":
+				outputPath = new File("HeldKarp.txt");
 				break;
 			case "Heuristic":
 				outputPath = new File("Heuristic.txt");
@@ -93,17 +89,17 @@ public class Main {
 			}
 
 			FileWriter fw = new FileWriter(outputPath, false);
+			fw.write("Dataset\tSolution\tTime(s)\tError(%)\n");
+			boolean testResult = true;
 
 			System.out.println("Executing " + algorithm + " algorithm");
 
-			// tsp_dataset.stream().forEach(entryset -> {
 			for(int k = 0; k < tsp_dataset.size(); k++){
 			try {
 				int example = k;
 				String entryset = tsp_dataset.get(example);
 				System.out.println("Input: " + entryset);
 				int cost = 0;
-				String buffer = new String("File:" + entryset + "\n");
 
 				File myObj = new File(entryset);
 				Scanner myReader = new Scanner(myObj);
@@ -113,9 +109,6 @@ public class Main {
 				while(myReader.hasNextLine() && !line.split(" ")[0].equals("DIMENSION:"))
 					line = myReader.nextLine();
 				Integer size_graph = Integer.valueOf(line.split(" ")[1]);
-				
-//				ESEMPIO del pdf
-//				size_graph = 4;
 				
 				Graph graph = new Graph(size_graph);
 				
@@ -143,13 +136,6 @@ public class Main {
 
 				myReader.close();
 
-				//ESEMPIO del pdf (commentare però il for)
-//									 graph.setAdjacentmatrixIndex(0, 1, 4);
-//									 graph.setAdjacentmatrixIndex(0, 2, 1);
-//									 graph.setAdjacentmatrixIndex(0, 3, 3);
-//									 graph.setAdjacentmatrixIndex(1, 2, 2);
-//									 graph.setAdjacentmatrixIndex(1, 3, 1);
-//									 graph.setAdjacentmatrixIndex(2, 3, 5);
 				for(int i = 0; i < size_graph; i++){
 					for(int j = i + 1; j < size_graph; j++){
 						switch (mode){
@@ -163,10 +149,10 @@ public class Main {
 						}
 					}
 				}
-				// System.out.println("Matrice di adiacenza:\n" + graph.printAdjacentmatrix());
 				
+				long start = System.nanoTime();
 				switch (algorithm){
-					case "TSP":
+					case "HeldKarp":
 					TSP tsp = new TSP(graph);
 					
 					ExecutorService executor = Executors.newCachedThreadPool();
@@ -197,25 +183,47 @@ public class Main {
 					throw new InvalidParameterException("Wrong choice of algorithm");	
 				}
 				
-				fw.write(name + " " + cost + "\n");
-				TestTSP.test(algorithm, example, cost, graph.getDimension());
+				long stop = System.nanoTime();
+
+				long timeElapsed = stop - start;
+				double time = timeElapsed;
+				time = time / 1000000000;
+
+				fw.write(name + "\t" + cost + "\t" + time + "\t");
+
+				if(!TestTSP.test(algorithm, example, cost, graph.getDimension(), fw))
+					testResult = false;
 			} catch (FileNotFoundException e) {}
 			}
 			//  });
 			fw.close();
+			if(testResult)
+				System.out.println("All tests passed!");
+			else
+				System.out.println("Some tests not passed.");
 			System.out.println("Finish!");
-			// test(algorithm);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	static void test() throws InterruptedException {
-		// TestDistanceSet.test();
-		// TestAdjacentMatrix.test();
-		// TestKruskal.test();
-		TestCheapestInsertion.test();
+	/**
+	 * @param structure: the structure used in TSP algorithms to test. This would be:
+	 * - AdjacentMatrix
+	 * - Kruskal
+	 * - CheapestInserion
+	*/
+	static void test(String structure) throws InterruptedException {
+		switch(structure){
+			case "Adjacentmatrix":
+				TestAdjacentMatrix.test();
+			case "Kruskal":
+				TestKruskal.test();
+			case "CheapestInsertion":
+				TestCheapestInsertion.test();
+			default:
+		}
 	}
 	
 //	public static int binomialCoefficient(int n, int k) {

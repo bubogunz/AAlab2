@@ -3,8 +3,6 @@ package lab2.algorithm;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import javafx.util.Pair;
 import lab2.model.AdjacentMatrix;
 import lab2.model.DisjointSet;
