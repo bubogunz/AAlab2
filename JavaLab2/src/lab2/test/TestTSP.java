@@ -25,7 +25,7 @@ public class TestTSP {
                         passed = true;
                     break;
                 case "Heuristic":
-                    if(cost <= solution*graphDimension*Math.log(graphDimension) && cost >= solution)
+                    if(cost <= solution*2 && cost >= solution)
                         passed = true;
                     break;
                 case "2Approx":

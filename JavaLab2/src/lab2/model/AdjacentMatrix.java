@@ -49,26 +49,28 @@ public class AdjacentMatrix{
 
     public Integer getMaxAdjacentVertexWeightIndex(int n){
         Integer max = -1;
+        Integer node = null;
         for(int i = 0; i < size(); i++){
             Integer tmp = get(n, i);
-            if(tmp != null && i != n && tmp > max)
-                max = i;
+            if(tmp != null && i != n && tmp > max){
+                max = tmp;
+                node = i;
+            }
         }
-        if(max == -1)
-            return null;
-        return max;
+        return node;
     }
 
     public Integer getMinAdjacentVertexWeightIndex(int n){
         Integer min = Integer.MAX_VALUE;
+        Integer node = null;
         for(int i = 0; i < size(); i++){
             Integer tmp = get(n, i); 
-            if(tmp != null && n != i && tmp < min)
-                min = i;
+            if(tmp != null && n != i && tmp < min){
+                min = tmp;
+                node = i;
+            }
         }
-        if(min == Integer.MAX_VALUE)
-            return null;
-        return min;
+        return node;
     }
 
     public ArrayList<Edge> getEdges(){

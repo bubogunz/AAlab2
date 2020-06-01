@@ -22,7 +22,6 @@ import lab2.algorithm.TSP;
 import lab2.model.Distancies;
 import lab2.model.Graph;
 import lab2.test.TestAdjacentMatrix;
-import lab2.test.TestCheapestInsertion;
 import lab2.test.TestKruskal;
 import lab2.test.TestTSP;
 
@@ -32,7 +31,7 @@ public class Main {
 //		printHeapInfo();
 		
 		compute("HeldKarp"); 
-		// test("Kruskal");
+		// test("CheapestInsertion");
 	}
 
 	public static void printHeapInfo() {
@@ -151,15 +150,15 @@ public class Main {
 				}
 				
 				long start = System.nanoTime();
+				TSP tsp = new TSP(graph);
 				switch (algorithm){
 					case "HeldKarp":
-					TSP tsp = new TSP(graph);
 					
 					ExecutorService executor = Executors.newCachedThreadPool();
 					Future<Integer> future  = executor.submit(new Callable<Integer>() {
 						@Override
 						public Integer call() throws Exception {
-							return tsp.HeldKarp(graph);
+							return tsp.HeldKarp();
 						}
 					});
 					//does not brutally shut down the program, it waits until the computation is finished
@@ -174,10 +173,10 @@ public class Main {
 					cost = tsp.getResult();
 					break;
 				case "Heuristic":
-					cost = TSP.CheapestInsertion(graph);
+					cost = tsp.CheapestInsertion();
 					break;
 				case "2Approx":
-					cost = TSP.Tree_TSP(graph);
+					cost = tsp.Tree_TSP();
 					break;
 				default:
 					throw new InvalidParameterException("Wrong choice of algorithm");	
@@ -216,12 +215,12 @@ public class Main {
 	*/
 	static void test(String structure) throws InterruptedException {
 		switch(structure){
-			case "Adjacentmatrix":
+			case "AdjacentMatrix":
 				TestAdjacentMatrix.test();
+				break;
 			case "Kruskal":
 				TestKruskal.test();
-			case "CheapestInsertion":
-				TestCheapestInsertion.test();
+				break;
 			default:
 		}
 	}

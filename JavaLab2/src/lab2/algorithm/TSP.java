@@ -1,6 +1,7 @@
 package lab2.algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import javafx.util.Pair;
@@ -14,7 +15,6 @@ public class TSP {
 	private HashMap<Pair<Integer, ArrayList<Integer>>, Integer> d = new HashMap<>();
 	private HashMap<Pair<Integer, ArrayList<Integer>>, Integer> pi = new HashMap<>();
 	private AdjacentMatrix w = null;
-//	private Integer result = new Integer(0);
 
 	public TSP(Graph g) {
 		w = g.getAdjacentMatrix();
@@ -29,8 +29,12 @@ public class TSP {
 		return res;
 	}
 
-	public Integer HeldKarp(Graph g) {
-		int size = g.getAdjacentMatrix().size();
+	/**
+	 * Finds the exat solution for TSP problem in O(n^2*2^n)
+	 * @return cost of path of the solution
+	*/
+	public Integer HeldKarp() {
+		int size = w.size();
 		ArrayList<Integer> S = new ArrayList<Integer>(size-1);
 		for(int i=1; i<size; ++i) {
 			S.add(i);
@@ -54,7 +58,7 @@ public class TSP {
 		return ret;
 	}
 
-	private Integer HeldKarpCore(Integer v, ArrayList<Integer> S) {
+	private Integer HeldKarpCore(Integer v, ArrayList<Integer> S){
 		if(S.size() == 1 && S.contains(v)) 
 			return w.get(v,0);
 		Pair<Integer, ArrayList<Integer>> index = new Pair<Integer, ArrayList<Integer>>(v,S);
@@ -103,14 +107,18 @@ public class TSP {
 		return String.format("%.1f %sB", (double)v / (1L << (z*10)), " KMGTPE".charAt(z));
 	}
 
-	public static int CheapestInsertion(Graph g){
-        ArrayList<Integer> path = new ArrayList<Integer>(g.getDimension() + 1);
-		ArrayList<Integer> notVisited = new ArrayList<Integer>(g.getDimension());
-		for(int i = 0; i < g.getDimension(); i++)
+	/**
+	 * Finds the 2-approximate solution for TSP problem in O(n^3)
+	 * @return cost of path of the solution
+	*/
+	public int CheapestInsertion(){
+        ArrayList<Integer> path = new ArrayList<Integer>(w.size() + 1);
+		ArrayList<Integer> notVisited = new ArrayList<Integer>(w.size());
+		for(int i = 0; i < w.size(); i++)
 			notVisited.add(i, i);
         int cost = 0;
 
-        Integer nextNode = g.getAdjacentMatrix().getMinAdjacentVertexWeightIndex(0);
+        Integer nextNode = w.getMinAdjacentVertexWeightIndex(0);
         
         path.add(0);
         notVisited.remove(Integer.valueOf(0));
@@ -118,13 +126,13 @@ public class TSP {
         notVisited.remove(nextNode);
         path.add(0);
 
-        for(int i = 0; i < g.getDimension() - 2; i++){
+        for(int i = 0; i < w.size() - 2; i++){
             Integer tmpNode = 0;
             int minCost = Integer.MAX_VALUE;
             for(Integer nodeK : notVisited){
                 for(int j = 0; j < path.size() - 1; j++){
-					int tmpCost = g.getAdjacentMatrixWeight(path.get(j), nodeK)
-					+ g.getAdjacentMatrixWeight(nodeK, path.get(j + 1)) - g.getAdjacentMatrixWeight(path.get(j), path.get(j + 1));
+					int tmpCost = w.get(path.get(j), nodeK)
+					+ w.get(nodeK, path.get(j + 1)) - w.get(path.get(j), path.get(j + 1));
 					if(tmpCost < minCost){
 						tmpNode = j;
 						nextNode = nodeK;
@@ -132,24 +140,28 @@ public class TSP {
 					}
 				}
             }
-            path.add(path.indexOf(tmpNode) + 1, nextNode);
+            path.add(tmpNode + 1, nextNode);
             notVisited.remove(nextNode);
         }
 
         for(int i = 0; i < path.size() - 1; i++)
-            cost += g.getAdjacentMatrixWeight(path.get(i), path.get(i + 1));
+            cost += w.get(path.get(i), path.get(i + 1));
 
         return cost;
     }
 
-    public static int Tree_TSP(Graph g){
-        Node tree = Kruskal(g);
+	/**
+	 * Finds the 2-approximate solution for TSP problem in O(mlog n + n)
+	 * @return cost of path of the solution
+	*/
+    public int Tree_TSP(){
+        Node tree = Kruskal();//O(mlog n)
         int cost = 0;
-        ArrayList<Integer> path = preorder(tree, new ArrayList<Integer>());
+        ArrayList<Integer> path = preorder(tree, new ArrayList<Integer>());//O(n)
         path.add(0);
 
         for(int i = 0; i < path.size() - 1; i++)
-            cost += g.getAdjacentMatrixWeight(path.get(i), path.get(i + 1));
+            cost += w.get(path.get(i), path.get(i + 1));
 
         return cost;
     }
@@ -163,13 +175,13 @@ public class TSP {
         return arr;
     }
 
-    private static Node Kruskal(Graph g){
-        AdjacentMatrix mst= new AdjacentMatrix(g.getDimension());
-		
-		ArrayList<Edge> sortedEdges = g.getSortedEdges();
+    private Node Kruskal(){
+        AdjacentMatrix mst= new AdjacentMatrix(w.size());
+		ArrayList<Edge> sortedEdges = w.getEdges();
+		Collections.sort(sortedEdges);
 
 		//O(n)
-		DisjointSet ds = new DisjointSet(g.getDimension());
+		DisjointSet ds = new DisjointSet(w.size());
 		
 		//O(mlog n)
         for(Edge edge : sortedEdges){//O(m)

@@ -1,0 +1,173 @@
+\subsection{Naive Kruskal}
+Anche per questo algoritmo non abbiamo fatto variazioni rispetto all'implementazione studiata a lezione, l'algoritmo infatti risulta avere una complessità finale di $O(mn)$. Se si osserva con attenzione però la complessità di ogni operazione all'interno dell'algoritmo, è possibile notare che dentro il ciclo \textit{for} è presente la funzione \textit{Graph.hasCycle()} che controlla se nel grafo selezionato è presente un ciclo. Tale funzione ha complessità $O(m+n)$ e farebbe dunque pensare che dunque l'algoritmo, nel totale, abbia na complessità $O(m(m+n))$; siccome però tale funzione viene invoca solo per MST, sappiamo che $m=n-1$, dunque la complessità dell'algoritmo infine è proprio $O(mn)$
+
+\image{}{Naive_Kruskal}{Performance dell'algoritmo Naive Kruskal}
+
+\textit{Naive Kruskal} è molto efficiente con grafi fino a 4k nodi, mentre già a 20k nodi inizia a mostrare rallentamenti, richiedendo un tempo di ~30 secondi, fino ad un tempo di ~30 minuti per grafi di 100k nodi.
+Inoltre, già a partire dai grafi di dimensione di 200 nodi, raddoppiare la grandezza del grafo richiede un aumento del tempo di risoluzione di un fattore 4 o 5.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{N.} & \textbf{Graph Size} & \textbf{Time (s)} & \textbf{MST cost}\\ 
+		\hline
+		1 & 10 & 0.0010596 & 29316\\
+		\hline
+		2 & 10 & 0.0002246 & 2126\\
+		\hline
+		3 & 10 & 0.0001755 & -44765\\
+		\hline
+		4 & 10 & 0.0001161 & 20360\\
+		\hline\hline
+		5 & 20 & 0.0003615 & -32021\\
+		\hline
+		6 & 20 & 0.0002788 & 18596\\
+		\hline
+		7 & 20 & 0.0002375 & -42560\\
+		\hline
+		8 & 20 & 0.0002041 & -37205\\
+		\hline\hline
+		9 & 40 & 0.0019728 & -122078\\
+		\hline
+		10 & 40 & 0.0003499 & -37021\\
+		\hline
+		11 & 40 & 0.0003325 & -79570\\
+		\hline
+		12 & 40 & 0.0002773 & -79741\\
+		\hline\hline
+		13 & 80 & 0.0014311 & -139926\\
+		\hline
+		14 & 80 & 0.0008544 & -211345\\
+		\hline
+		15 & 80 & 0.0009532 & -110571\\
+		\hline
+		16 & 80 & 0.0020361 & -233320\\
+		\hline\hline
+		17 & 100 & 0.0022148 & -141960\\
+		\hline
+		18 & 100 & 0.001367 & -271743\\
+		\hline
+		19 & 100 & 0.0011847 & -288906\\
+		\hline
+		20 & 100 & 0.0008953 & -232178\\
+		\hline\hline
+		21 & 200 & 0.0022246 & -510185\\
+		\hline
+		22 & 200 & 0.0018707 & -515136\\
+		\hline
+		23 & 200 & 0.0019732 & -444357\\
+		\hline
+		24 & 200 & 0.0025881 & -393278\\
+		\hline\hline
+		25 & 400 & 0.0069684 & -1122919\\
+		\hline
+		26 & 400 & 0.0055755 & -788168\\
+		\hline
+		27 & 400 & 0.0089353 & -895704\\
+		\hline
+		28 & 400 & 0.0060748 & -733645\\
+		\hline\hline
+		29 & 800 & 0.0252481 & -1541291\\
+		\hline
+		30 & 800 & 0.0258438 & -1578294\\
+		\hline
+		31 & 800 & 0.0269498 & -1675534\\
+		\hline
+		32 & 800 & 0.0250428 & -1652119\\
+		\hline
+	\end{tabular}
+\caption{Risultati dell'algoritmo \textit{Naive Kruskal} (1 di 3)}
+\end{table}
+		
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{N.} & \textbf{Graph Size} & \textbf{Time (s)} & \textbf{MST cost}\\
+		\hline
+		33 & 1k & 0.0396759 & -2091110\\
+		\hline
+		34 & 1k & 0.0365509 & -1934208\\
+		\hline
+		35 & 1k & 0.0376809 & -2229428\\
+		\hline
+		36 & 1k & 0.040684 & -2359192\\
+		\hline\hline
+		37 & 2k & 0.1869853 & -4811598\\
+		\hline
+		38 & 2k & 0.1927233 & -4739387\\
+		\hline
+		39 & 2k & 0.1956191 & -4717250\\
+		\hline
+		40 & 2k & 0.2264677 & -4537267\\
+		\hline\hline
+		41 & 4k & 0.9198784 & -8722212\\
+		\hline
+		42 & 4k & 1.0673374 & -9314968\\
+		\hline
+		43 & 4k & 1.176725 & -9845767\\
+		\hline
+		44 & 4k & 1.177549 & -8681447\\
+		\hline\hline
+		45 & 8k & 4.3709961 & -17844628\\
+		\hline
+		46 & 8k & 3.8505744 & -18800966\\
+		\hline
+		47 & 8k & 4.152138 & -18741474\\
+		\hline
+		48 & 8k & 3.9908528 & -18190442\\
+		\hline\hline
+		49 & 10k & 5.846408 & -22086729\\
+		\hline
+		50 & 10k & 6.316151 & -22338561\\
+		\hline
+		51 & 10k & 6.526546 & -22581384\\
+		\hline
+		52 & 10k & 7.4906781 & -22606313\\
+		\hline\hline
+		53 & 20k & 33.2681333 & -45978687\\
+		\hline
+		54 & 20k & 31.7596484 & -45195405\\
+		\hline
+		55 & 20k & 28.8519555 & -47854708\\
+		\hline
+		56 & 20k & 28.6587404 & -46420311\\
+		\hline\hline
+		57 & 40k & 157.6931358 & -92003321\\
+		\hline
+		58 & 40k & 167.1818835 & -94397064\\
+		\hline
+		59 & 40k & 160.0550749 & -88783643\\
+		\hline
+		60 & 40k & 162.5589424 & -93017025\\
+		\hline\hline
+		61 & 80k & 908.1871984 & -186834082\\
+		\hline
+		62 & 80k & 882.8654037 & -185997521\\
+		\hline
+		63 & 80k & 954.7231673 & -182065015\\
+		\hline
+		64 & 80k & 877.5672819 & -180803872\\
+		\hline
+	\end{tabular}
+\caption{Risultati dell'algoritmo \textit{Naive Kruskal} (2 di 3)}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{N.} & \textbf{Graph Size} & \textbf{Time (s)} & \textbf{MST cost}\\
+		\hline
+		65 & 100k & 1577.2524851 & -230698391\\
+		\hline
+		66 & 100k & 1909.1328731 & -230168572\\
+		\hline
+		67 & 100k & 1905.8766097 & -231393935\\
+		\hline
+		68 & 100k & 1908.9756497 & -231011693\\
+		\hline
+	\end{tabular}
+\caption{Risultati dell'algoritmo \textit{Naive Kruskal} (3 di 3)}
+\end{table}

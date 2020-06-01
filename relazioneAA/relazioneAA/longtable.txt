@@ -1,0 +1,25 @@
+\begin{center}
+	\begin{longtable}{ r | c | c } %\hline
+	\multicolumn{1}{c|}{\textbf{Caratteristica}} &\textbf{PC di Nicola}&\textbf{PC di Federico}\\ \hline 
+	\endfirsthead
+	\rowcolor{white}
+	\multicolumn{3}{|r|}{\textit{-- continuazione da pagina precedente}} \\ \hline 
+	\endhead
+	\hline
+	\rowcolor{white} 
+	\multicolumn{3}{|r|}{{\textit{-- continua a pagina successiva}}} \\
+	\endfoot
+	\endlastfoot
+	%table input should begin here
+	Nome processore & & Intel i7-8750H \\
+	Numero core & & 6\\
+	Numero thread & & 12 \\
+	Range velocità di clock [GHz] & & 2.20 - 4.10\\
+	Dimensione cache L1 [KiB] & & 384\\
+	Dimensione cache L2 [MiB] & & 1.5\\
+	Dimensione cache L3 [MiB] & & 9\\
+	Dimensione RAM [GiB] & & 31.2\\  \hline
+	
+	\caption{Specifiche dei calcolatori utilizzati.\\ Fonte: \url{http://intel.com}.}
+	\end{longtable}
+\end{center} 

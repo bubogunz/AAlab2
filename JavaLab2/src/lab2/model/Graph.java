@@ -1,8 +1,5 @@
 package lab2.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public final class Graph {
 
 	private AdjacentMatrix adjacentMatrix;
@@ -22,12 +19,6 @@ public final class Graph {
 
 	public void setAdjacentmatrixWeight(int x, int y, int value) {
 		adjacentMatrix.set(x, y, value);
-	}
-
-	public ArrayList<Edge> getSortedEdges(){
-		ArrayList<Edge> sortedEdges = adjacentMatrix.getEdges();
-		Collections.sort(sortedEdges);
-		return sortedEdges;
 	}
 
 	public String printAdjacentmatrix() {
