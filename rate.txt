@@ -1,0 +1,36 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{N.} & \textbf{Name Graph} & \textbf{CheapestInsertion ratio} & \textbf{Tree\_TSP ratio}\\ 
+\hline
+1 & berlin52 & 0.2126 & 0.3175\\
+\hline
+2 & burma14 & 0.0022 & 0.0042\\
+\hline
+3 & ch150 & 1.6794 & 1.0099\\
+\hline
+4 & d493 & 8.0955 & 3.1753\\
+\hline
+5 & dsj1000 & 153.453 & 15.9731\\
+\hline
+6 & eil51 & 0.1554 & 0.0245\\
+\hline
+7 & gr202 & 1.3764 & 0.5801\\
+\hline
+8 & gr229 & 0.7594 & 0.6749\\
+\hline
+9 & kroA100 & 0.0702 & 0.0639\\
+\hline
+10 & kroD100 & 0.0744 & 0.0674\\
+\hline
+11 & pcb442 & 7.7838 & 2.9663\\
+\hline
+12 & ulysses16 & 0.0002 & 0.0008\\
+\hline
+13 & ulysses22 & 0.0009 & 0.0017\\
+\hline
+ & \textbf{Average} & 13.36 & 1.91\\
+\hline
+\end{tabular}
+\end{table}
