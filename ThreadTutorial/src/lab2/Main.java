@@ -134,7 +134,19 @@ public class Main {
 		System.out.println("Finished.");
 	}
 	
+	public static double timeThread(int minutes) throws InterruptedException {
+		long start = System.nanoTime();
+		for(int i=0; i<minutes*1100; ++i)
+			Thread.sleep(50);
+		long stop = System.nanoTime();
+		long timeElapsed = stop - start;
+		double time = timeElapsed;
+		time = time / 1000000000;
+		return time;
+	}
+	
 	public static void main(String[] args) throws InterruptedException {
-		tutorial2withThreadPool();
+//		tutorial2withThreadPool();
+		System.out.println(timeThread(1));
 	}
 }

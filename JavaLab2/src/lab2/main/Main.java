@@ -11,10 +11,12 @@ import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,7 +39,7 @@ public class Main {
 	public static void printHeapInfo() {
 		
 		long heapSize = Runtime.getRuntime().totalMemory(); 
-
+		
 		// Get maximum size of heap in bytes. The heap cannot grow beyond this size.// Any attempt will result in an OutOfMemoryException.
 		long heapMaxSize = Runtime.getRuntime().maxMemory();
 
@@ -47,6 +49,7 @@ public class Main {
 		System.out.println("heapsize " + formatSize(heapSize));
 		System.out.println("heapmaxsize " + formatSize(heapMaxSize));
 		System.out.println("heapFreesize " + formatSize(heapFreeSize));
+		System.out.println("usedHeap " + formatSize(heapMaxSize - heapFreeSize));
 	}
 
 	public static String formatSize(long v) {
@@ -67,6 +70,7 @@ public class Main {
 	 * algorithm choosen. 
 	 */
 	public static void compute(String algorithm) throws InterruptedException {
+		int minutes = 1;
 		// fetch files
 		try (Stream<Path> walk = Files.walk(Paths.get("tsp_dataset"))) {
 			List<String> tsp_dataset = walk.filter(Files::isRegularFile).map(x -> x.toString()).sorted()
@@ -150,24 +154,40 @@ public class Main {
 				}
 				
 				long start = System.nanoTime();
+
 				TSP tsp = new TSP(graph);
+
+				long stop = 0;
+
 				switch (algorithm){
 					case "HeldKarp":
 					
 					ExecutorService executor = Executors.newCachedThreadPool();
-					Future<Integer> future  = executor.submit(new Callable<Integer>() {
+					Future<Void> future  = executor.submit(new Callable<Void>() {
 						@Override
-						public Integer call() throws Exception {
-							return tsp.HeldKarp();
+
+						public Void call() throws Exception {
+							tsp.HeldKarp();
+							return null;
+
 						}
 					});
-					//does not brutally shut down the program, it waits until the computation is finished
+					//does not brutally shut down the program, it waits until the last l computation is finished
 					executor.shutdown();
 					
-					Thread.sleep(1000);
-					
+					if(entryset.contains("14.tsp") || entryset.contains("16.tsp") || entryset.contains("22.tsp"))
+						for(int i=0; i<minutes*1200 && !future.isDone(); ++i)
+							Thread.sleep(50);
+					else 
+						Thread.sleep(minutes*60000);
+				
 					//Sets the "interrupted flag" that will break computation of the thread gracefully
 					future.cancel(true);
+					stop = System.nanoTime();
+					long timeElapsed = stop - start;
+					double time = timeElapsed;
+					time = time / 1000000000;
+					System.out.println("Stopped in " + time + "s");
 					executor.awaitTermination(1, TimeUnit.DAYS);
 
 					cost = tsp.getResult();
@@ -182,7 +202,8 @@ public class Main {
 					throw new InvalidParameterException("Wrong choice of algorithm");	
 				}
 				
-				long stop = System.nanoTime();
+				if(stop == 0)
+					stop = System.nanoTime();
 
 				long timeElapsed = stop - start;
 				double time = timeElapsed;
@@ -192,7 +213,14 @@ public class Main {
 
 				if(!TestTSP.test(algorithm, example, cost, graph.getDimension(), fw))
 					testResult = false;
+				
+				printHeapInfo();
+				System.out.println("Time elapsed: " + time + "s");
+				System.out.println("cost: " + cost);
+				System.out.println();
 			} catch (FileNotFoundException e) {}
+			//garbage collector
+			System.gc();
 			}
 			//  });
 			fw.close();
@@ -224,14 +252,4 @@ public class Main {
 			default:
 		}
 	}
-	
-//	public static int binomialCoefficient(int n, int k) {
-//		return (fact(n) / (fact(k) * fact(n - k)));
-//	}
-//	
-//	public static int fact(int n) {
-//		if(n == 0)
-//			return 1;
-//		return n*fact(--n);
-//	}
 }

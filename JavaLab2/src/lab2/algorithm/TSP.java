@@ -33,28 +33,27 @@ public class TSP {
 	 * Finds the exat solution for TSP problem in O(n^2*2^n)
 	 * @return cost of path of the solution
 	*/
-	public Integer HeldKarp() {
+	public void HeldKarp() {
 		int size = w.size();
 		ArrayList<Integer> S = new ArrayList<Integer>(size-1);
 		for(int i=1; i<size; ++i) {
 			S.add(i);
 		}
 		try {
-			int result = HeldKarpCore(0, S);
-			return result;
+			HeldKarpCore(0, S);
 		}catch (OutOfMemoryError e) {
 			printHeapInfo();
+			System.out.println("Need more memory!");
 			System.out.println();
 		}
-		return null;
 	} 
 
-	private ArrayList<Integer> deepCopyWithoutV(ArrayList<Integer> old, Integer v){
+	private ArrayList<Integer> copyWithoutV(ArrayList<Integer> old, Integer v){
 		ArrayList<Integer> ret = new ArrayList<Integer>(old.size());
 		for(Integer item : old)
-			if(!item.equals(v))
+			if(!item.equals(v)) 
 				ret.add(item);
-
+			
 		return ret;
 	}
 
@@ -67,7 +66,7 @@ public class TSP {
 		Integer mindist = Integer.MAX_VALUE;
 		Integer minprec = null;
 
-		ArrayList<Integer> S_new = deepCopyWithoutV(S, v);
+		ArrayList<Integer> S_new = copyWithoutV(S, v);
 
 		for(Integer u : S_new) {
 			Integer dist = HeldKarpCore(u,S_new);
@@ -76,7 +75,6 @@ public class TSP {
 				minprec = Integer.valueOf(u);
 			}
 			if(Thread.currentThread().isInterrupted()) {
-				System.out.println("Timeout reached.");
 				break;
 			}
 		}

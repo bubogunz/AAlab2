@@ -1,0 +1,1741 @@
+##### 1 minute #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 60.7069283s
+Test NOT passed.
+heapsize 9,6 GB
+heapmaxsize 9,6 GB
+heapFreesize 5,9 GB
+usedHeap 3,7 GB
+Time elapsed: 60.7069283s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1014619s
+Test passed!
+heapsize 8,2 GB
+heapmaxsize 8,9 GB
+heapFreesize 8,2 GB
+usedHeap 746,2 MB
+Time elapsed: 0.1014619s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 59.9998832s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 5,2 GB
+usedHeap 3,7 GB
+Time elapsed: 59.9998832s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 60.5981445s
+Test NOT passed.
+heapsize 9,1 GB
+heapmaxsize 9,1 GB
+heapFreesize 5,9 GB
+usedHeap 3,2 GB
+Time elapsed: 60.5981445s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 60.0011627s
+Test NOT passed.
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,3 GB
+usedHeap 4,0 GB
+Time elapsed: 60.0011627s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 60.0002202s
+Test NOT passed.
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,2 GB
+usedHeap 3,9 GB
+Time elapsed: 60.0002202s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 60.0002132s
+Test NOT passed.
+heapsize 9,3 GB
+heapmaxsize 9,3 GB
+heapFreesize 4,8 GB
+usedHeap 4,5 GB
+Time elapsed: 60.0002132s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 59.9999242s
+Test NOT passed.
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,1 GB
+usedHeap 4,2 GB
+Time elapsed: 59.9999242s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 60.0000959s
+Test NOT passed.
+heapsize 9,3 GB
+heapmaxsize 9,3 GB
+heapFreesize 6,2 GB
+usedHeap 3,1 GB
+Time elapsed: 60.0000959s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 59.9995995s
+Test NOT passed.
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,2 GB
+usedHeap 4,0 GB
+Time elapsed: 59.9995995s
+cost: 146158
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 59.9994394s
+Test NOT passed.
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,0 GB
+usedHeap 4,2 GB
+Time elapsed: 59.9994394s
+cost: 202517
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3550474s
+Test passed!
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 9,1 GB
+usedHeap 113,8 MB
+Time elapsed: 0.3550474s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 53.1816306s
+Test passed!
+heapsize 9,2 GB
+heapmaxsize 9,2 GB
+heapFreesize 5,5 GB
+usedHeap 3,7 GB
+Time elapsed: 53.1816306s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 2 minutes #####
+
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 137.3074803s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,6 GB
+usedHeap 4,5 GB
+Time elapsed: 137.3074803s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1010127s
+Test passed!
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 7,1 GB
+usedHeap 47,6 MB
+Time elapsed: 0.1010127s
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 139.681323s
+Test NOT passed.
+heapsize 7,3 GB
+heapmaxsize 7,3 GB
+heapFreesize 2,5 GB
+usedHeap 4,7 GB
+Time elapsed: 139.681323s
+
+Input: tsp_dataset\d493.tsp
+Stopped in 122.083537s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,3 GB
+usedHeap 4,8 GB
+Time elapsed: 122.083537s
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 127.4373735s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,3 GB
+usedHeap 4,9 GB
+Time elapsed: 127.4373735s
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 134.2544689s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,4 GB
+usedHeap 4,7 GB
+Time elapsed: 134.2544689s
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 135.4504242s
+Test NOT passed.
+heapsize 7,2 GB
+heapmaxsize 7,2 GB
+heapFreesize 2,3 GB
+usedHeap 4,9 GB
+Time elapsed: 135.4504242s
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 120.0007516s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 1,3 GB
+usedHeap 4,5 GB
+Time elapsed: 120.0007516s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 140.7119079s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,5 GB
+usedHeap 4,7 GB
+Time elapsed: 140.7119079s
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 128.0360625s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,7 GB
+usedHeap 4,4 GB
+Time elapsed: 128.0360625s
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 128.0624631s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 2,2 GB
+usedHeap 4,9 GB
+Time elapsed: 128.0624631s
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3545121s
+Test passed!
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 7,0 GB
+usedHeap 96,3 MB
+Time elapsed: 0.3545121s
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 56.5112049s
+Test passed!
+heapsize 6,9 GB
+heapmaxsize 7,1 GB
+heapFreesize 3,5 GB
+usedHeap 3,6 GB
+Time elapsed: 56.5112049s
+
+Some tests not passed.
+Finish!
+
+##### 2 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 120.0173861s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,7 GB
+Time elapsed: 120.0173861s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.2028629s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 34,7 MB
+Time elapsed: 0.2028629s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 120.9499919s
+Test NOT passed.
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 2,2 GB
+usedHeap 3,5 GB
+Time elapsed: 120.9499919s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 120.4768899s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 2,4 GB
+usedHeap 3,4 GB
+Time elapsed: 120.4768899s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 120.0011931s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 1,7 GB
+usedHeap 4,1 GB
+Time elapsed: 120.0011931s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 120.0005398s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 1,9 GB
+usedHeap 3,9 GB
+Time elapsed: 120.0005398s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 119.9998245s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 1,7 GB
+usedHeap 4,1 GB
+Time elapsed: 119.9998245s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 120.0007516s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 1,3 GB
+usedHeap 4,5 GB
+Time elapsed: 120.0007516s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 120.0002518s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 2,1 GB
+usedHeap 3,7 GB
+Time elapsed: 120.0002518s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 120.0012114s
+Test NOT passed.
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 2,2 GB
+usedHeap 3,6 GB
+Time elapsed: 120.0012114s
+cost: 146158
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 120.4060717s
+Test NOT passed.
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 1,8 GB
+usedHeap 3,9 GB
+Time elapsed: 120.4060717s
+cost: 202517
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.5583597s
+Test passed!
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 5,6 GB
+usedHeap 112,4 MB
+Time elapsed: 0.5583597s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 98.943245s
+Test passed!
+heapsize 5,8 GB
+heapmaxsize 5,8 GB
+heapFreesize 2,9 GB
+usedHeap 2,9 GB
+Time elapsed: 98.943245s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 3 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 124.4460102s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,8 GB
+usedHeap 3,8 GB
+Time elapsed: 124.4460102s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.2538225s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.2538225s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 120.000012s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,2 GB
+Time elapsed: 120.000012s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 132.153245s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 132.153245s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 131.7108873s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 131.7108873s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 130.7596583s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 130.7596583s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 120.8297697s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 120.8297697s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 120.0003321s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,1 GB
+usedHeap 4,6 GB
+Time elapsed: 120.0003321s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 165.8099043s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,8 GB
+Time elapsed: 165.8099043s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 164.9731368s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,2 GB
+Time elapsed: 164.9731368s
+cost: 144125
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 122.3513792s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 122.3513792s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3561661s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3561661s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 61.6665617s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,9 GB
+usedHeap 2,7 GB
+Time elapsed: 61.6665617s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 4 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 120.7405049s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,8 GB
+usedHeap 3,8 GB
+Time elapsed: 120.7405049s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1011759s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.1011759s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 123.8723889s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 123.8723889s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 129.2664269s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 129.2664269s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 119.999835s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,2 GB
+Time elapsed: 119.999835s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 131.5731347s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,8 GB
+Time elapsed: 131.5731347s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 123.7515369s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 123.7515369s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 128.1438221s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 128.1438221s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 131.5879716s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 131.5879716s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 134.7561748s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 134.7561748s
+cost: 144125
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 120.8920548s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 120.8920548s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3549328s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3549328s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 59.4115426s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,5 GB
+usedHeap 3,2 GB
+Time elapsed: 59.4115426s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 5 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 120.0040963s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,3 GB
+usedHeap 4,4 GB
+Time elapsed: 120.0040963s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1018111s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 34,7 MB
+Time elapsed: 0.1018111s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 131.5754249s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 131.5754249s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 120.0008228s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,2 GB
+Time elapsed: 120.0008228s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 119.9999837s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,3 GB
+Time elapsed: 119.9999837s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 120.5306321s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,3 GB
+Time elapsed: 120.5306321s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 128.3926205s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 128.3926205s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 123.0097847s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 4,0 GB
+Time elapsed: 123.0097847s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 127.4493104s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 127.4493104s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 125.2252821s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 125.2252821s
+cost: 145329
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 128.607171s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 128.607171s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3549766s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3549766s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 57.2890568s
+Test passed!
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 2,4 GB
+usedHeap 3,2 GB
+Time elapsed: 57.2890568s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 6 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 120.0067147s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,1 GB
+usedHeap 4,5 GB
+Time elapsed: 120.0067147s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1014893s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 34,7 MB
+Time elapsed: 0.1014893s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 121.0790225s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 121.0790225s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 120.0001071s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 120.0001071s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 120.0011285s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,2 GB
+Time elapsed: 120.0011285s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 119.999775s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 921,4 MB
+usedHeap 4,7 GB
+Time elapsed: 119.999775s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 120.0003611s
+Test NOT passed.
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 120.0003611s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 122.8361594s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 122.8361594s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 134.1977996s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 134.1977996s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 120.0002341s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 120.0002341s
+cost: 145329
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 135.8388861s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 135.8388861s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3553446s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3553446s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 64.4078023s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,8 GB
+usedHeap 2,9 GB
+Time elapsed: 64.4078023s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 7 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 131.2503256s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 131.2503256s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1519834s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.1519834s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 134.879556s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 134.879556s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 120.4197037s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 120.4197037s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 134.238971s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 134.238971s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 132.7424393s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,8 GB
+Time elapsed: 132.7424393s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 122.7411304s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 122.7411304s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 124.2106685s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 124.2106685s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 120.0002485s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,2 GB
+usedHeap 4,4 GB
+Time elapsed: 120.0002485s
+cost: 164223
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 121.3765934s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,3 GB
+usedHeap 4,3 GB
+Time elapsed: 121.3765934s
+cost: 144125
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 147.3037173s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 147.3037173s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3560769s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3560769s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 59.4452331s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,8 GB
+usedHeap 2,8 GB
+Time elapsed: 59.4452331s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 8 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 126.3123372s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,8 GB
+usedHeap 3,8 GB
+Time elapsed: 126.3123372s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1011068s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.1011068s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 122.0375333s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 122.0375333s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 133.3944668s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 133.3944668s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 127.9158242s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,1 GB
+Time elapsed: 127.9158242s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 120.0004296s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 120.0004296s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 134.3228604s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 134.3228604s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 129.5791958s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 129.5791958s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 148.2956163s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 148.2956163s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 120.9295151s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,1 GB
+usedHeap 3,6 GB
+Time elapsed: 120.9295151s
+cost: 145846
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 135.8471821s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 135.8471821s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.5071271s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.5071271s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 64.1090647s
+Test passed!
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 2,9 GB
+usedHeap 2,8 GB
+Time elapsed: 64.1090647s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 9 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 120.2002176s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,1 GB
+usedHeap 3,5 GB
+Time elapsed: 120.2002176s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1520703s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.1520703s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 134.7450917s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,8 GB
+Time elapsed: 134.7450917s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 130.5769738s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 130.5769738s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 120.0015551s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,2 GB
+usedHeap 4,4 GB
+Time elapsed: 120.0015551s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 119.9997898s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 119.9997898s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 125.3000418s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,8 GB
+usedHeap 3,8 GB
+Time elapsed: 125.3000418s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 126.0252087s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 4,0 GB
+Time elapsed: 126.0252087s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 120.0000117s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,0 GB
+usedHeap 3,7 GB
+Time elapsed: 120.0000117s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 133.5027795s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,1 GB
+usedHeap 3,5 GB
+Time elapsed: 133.5027795s
+cost: 145846
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 125.7978382s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 125.7978382s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3526814s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3526814s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 58.7930496s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,3 GB
+usedHeap 3,3 GB
+Time elapsed: 58.7930496s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 10 #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 128.144911s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,6 GB
+usedHeap 4,0 GB
+Time elapsed: 128.144911s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1016226s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 37,2 MB
+Time elapsed: 0.1016226s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 120.0000583s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,4 GB
+usedHeap 4,2 GB
+Time elapsed: 120.0000583s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 120.4987267s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 120.4987267s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 120.0007553s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,2 GB
+usedHeap 4,5 GB
+Time elapsed: 120.0007553s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 154.6041081s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 154.6041081s
+cost: 986
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 120.8065729s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,8 GB
+usedHeap 3,8 GB
+Time elapsed: 120.8065729s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 122.1545127s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 4,0 GB
+Time elapsed: 122.1545127s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 136.3607385s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,7 GB
+usedHeap 3,9 GB
+Time elapsed: 136.3607385s
+cost: 165018
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 133.6725263s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,9 GB
+usedHeap 3,8 GB
+Time elapsed: 133.6725263s
+cost: 145329
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 134.4575415s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 1,5 GB
+usedHeap 4,1 GB
+Time elapsed: 134.4575415s
+cost: 202233
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.3551443s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,4 MB
+Time elapsed: 0.3551443s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 58.7111675s
+Test passed!
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 2,5 GB
+usedHeap 3,2 GB
+Time elapsed: 58.7111675s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 5 minutes #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 303.9515912s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 802,6 MB
+usedHeap 4,9 GB
+Time elapsed: 303.9515912s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1527018s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 34,7 MB
+Time elapsed: 0.1527018s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 316.6826687s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 748,0 MB
+usedHeap 4,9 GB
+Time elapsed: 316.6826687s
+cost: 47935
+
+Input: tsp_dataset\d493.tsp
+Stopped in 308.136883s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 762,6 MB
+usedHeap 4,9 GB
+Time elapsed: 308.136883s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 306.4929336s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 760,2 MB
+usedHeap 4,9 GB
+Time elapsed: 306.4929336s
+cost: 551274242
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 300.4636176s
+Test NOT passed.
+heapsize 5,7 GB
+heapmaxsize 5,7 GB
+heapFreesize 832,9 MB
+usedHeap 4,9 GB
+Time elapsed: 300.4636176s
+cost: 984
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 305.2694109s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 761,0 MB
+usedHeap 4,9 GB
+Time elapsed: 305.2694109s
+cost: 55127
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 312.290251s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 759,5 MB
+usedHeap 4,9 GB
+Time elapsed: 312.290251s
+cost: 176212
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 308.6056528s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 805,6 MB
+usedHeap 4,9 GB
+Time elapsed: 308.6056528s
+cost: 162606
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 314.6257671s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 809,4 MB
+usedHeap 4,9 GB
+Time elapsed: 314.6257671s
+cost: 144125
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 300.9724694s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 748,3 MB
+usedHeap 4,9 GB
+Time elapsed: 300.9724694s
+cost: 202044
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.4043046s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,5 GB
+usedHeap 106,2 MB
+Time elapsed: 0.4043046s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 57.7751475s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 2,8 GB
+usedHeap 2,8 GB
+Time elapsed: 57.7751475s
+cost: 7013
+
+Some tests not passed.
+Finish!
+
+##### 10 minutes #####
+Executing HeldKarp algorithm
+Input: tsp_dataset\berlin52.tsp
+Stopped in 603.3499838s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 722,1 MB
+usedHeap 4,9 GB
+Time elapsed: 603.3499838s
+cost: 17441
+
+Input: tsp_dataset\burma14.tsp
+Stopped in 0.1516301s
+Test passed!
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 34,7 MB
+Time elapsed: 0.1516301s
+cost: 3323
+
+Input: tsp_dataset\ch150.tsp
+Stopped in 606.4797458s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 16,4 MB
+Time elapsed: 606.4797458s
+cost: 47885
+
+Input: tsp_dataset\d493.tsp
+Stopped in 603.6589617s
+Test NOT passed.
+heapsize 5,6 GB
+heapmaxsize 5,6 GB
+heapFreesize 5,6 GB
+usedHeap 4,3 MB
+Time elapsed: 603.6589617s
+cost: 111947
+
+Input: tsp_dataset\dsj1000.tsp
+Stopped in 611.3698087s
+Test NOT passed.
+heapsize 7,1 GB
+heapmaxsize 7,1 GB
+heapFreesize 910,2 MB
+usedHeap 6,2 GB
+Time elapsed: 611.3698087s
+cost: 550719964
+
+Input: tsp_dataset\eil51.tsp
+Stopped in 601.2933461s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,1 GB
+usedHeap 7,7 GB
+Time elapsed: 601.2933461s
+cost: 963
+
+Input: tsp_dataset\gr202.tsp
+Stopped in 605.3919044s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,3 GB
+usedHeap 7,6 GB
+Time elapsed: 605.3919044s
+cost: 55125
+
+Input: tsp_dataset\gr229.tsp
+Stopped in 603.008865s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,3 GB
+usedHeap 7,7 GB
+Time elapsed: 603.008865s
+cost: 175982
+
+Input: tsp_dataset\kroA100.tsp
+Stopped in 699.8997438s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,2 GB
+usedHeap 7,7 GB
+Time elapsed: 699.8997438s
+cost: 161443
+
+Input: tsp_dataset\kroD100.tsp
+Stopped in 605.5550175s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,1 GB
+usedHeap 7,8 GB
+Time elapsed: 605.5550175s
+cost: 143960
+
+Input: tsp_dataset\pcb442.tsp
+Stopped in 603.1715797s
+Test NOT passed.
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 1,3 GB
+usedHeap 7,6 GB
+Time elapsed: 603.1715797s
+cost: 202044
+
+Input: tsp_dataset\ulysses16.tsp
+Stopped in 0.406403s
+Test passed!
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 8,8 GB
+usedHeap 116,7 MB
+Time elapsed: 0.406403s
+cost: 6859
+
+Input: tsp_dataset\ulysses22.tsp
+Stopped in 58.3268289s
+Test passed!
+heapsize 8,9 GB
+heapmaxsize 8,9 GB
+heapFreesize 5,3 GB
+usedHeap 3,6 GB
+Time elapsed: 58.3268289s
+cost: 7013
