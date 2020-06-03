@@ -1,38 +1,140 @@
 \section{Risultati degli algoritmi}
 Questa sezione risponderà alla Domanda 1: verranno riportati sotto forma di tabella i risultati dei costi per il problema TSP dei grafi richiesti, il tempo di esecuzione di ogni algoritmo e l'errore relativo rispetto alla soluzione esatta.
 
-\subsection{Specifiche Hardware dei calcolatori utilizzati}
-Dato il considerevole divario di prestazioni ottenute dalle due diverse macchine, gli studenti hanno ritenuto opportuno riportare le differenti tempistiche impiegate per il calcolo dei costi degli MST.
+\subsection{Domanda 1}
+Eseguite i tre algoritmi che avete implementato (Held-Karp, euristica costruttiva e 2-approssimato) sui 13 grafi del dataset. Mostrate i risultati che avete ottenuto in una tabella come quella sottostante. Le righe della tabella corrispondono alle istanze del problema. Le colonne mostrano, per ogni algoritmo, il peso della soluzione trovata, il tempo di esecuzione e l'errore relativo calcolato come $(SoluzioneTrovata - SoluzioneOttima)/SoluzioneOttima$. Potete aggiungere altre informazioni alla tabella che ritenete interessanti. 
+\image{1}{estab}{Esempio di tabella riportante i risultati ottenuti}
+\subsubsection{Svolgimento}
 \begin{center}
-	\begin{longtable}{ r | c | c } %\hline
-	\multicolumn{1}{c|}{\textbf{Caratteristica}} &\textbf{PC di Nicola}&\textbf{PC di Federico}\\ \hline 
-	\endfirsthead
-	\rowcolor{white}
-	\multicolumn{3}{|r|}{\textit{-- continuazione da pagina precedente}} \\ \hline 
-	\endhead
+	\scriptsize
+	\begin{longtable}{|c|c|c|c|c|c|c|c|c|c|}	
 	\hline
-	\rowcolor{white} 
-	\multicolumn{3}{|r|}{{\textit{-- continua a pagina successiva}}} \\
-	\endfoot
-	\endlastfoot
-	%table input should begin here
-	Architettura & 64 bit & 64 bit \\
-	Nome processore & Intel i5-7300HQ & Intel i7-8750H \\
-	Numero core & 4 & 6\\
-	Numero thread & 4 & 12 \\
-	Range velocità di clock [GHz] & 2.50 - 3.50 & 2.20 - 4.10\\
-	Dimensione cache L1 [KiB] & 256 & 384\\
-	Dimensione cache L2 [MiB] & 1 & 1.5\\
-	Dimensione cache L3 [MiB] & 6 & 9\\
-	Dimensione RAM [GiB] & 8 & 31.2\\  \hline
-	\caption{Specifiche dei calcolatori utilizzati\\ (Fonte: \url{http://intel.com}).}
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} & \multicolumn{3}{c|}{\textbf{Cheapest Insertion}} & \multicolumn{3}{c|}{\textbf{Triangle\_TSP}} \\ \cline{2-10}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} & \textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} & \textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endfirsthead
+		\multicolumn{10}{|c|}%
+		{\tablename\ \thetable\ \ --\  \textit{continuazione della pagina precedente}} \\
+		\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-10}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} & \textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} & \textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endhead
+		\hline \multicolumn{10}{|r|}{\textit{Continua nella pagina seguente}} \\
+		\endfoot
+		\endlastfoot
+		berlin52.tsp & 17441 & 120,0174 & 131,25\% & 9004 & 0,0096 & 19,38\%& 10402 &0,0074 &37.92\% \\ \hline
+		burma14.tsp & 3323 & 0,2029 & 0,0\% & 3588 & 0,0003 & 7,97\% &4003 & 0,0002&20.46\% \\ \hline
+		ch150.tsp & 47935 & 120,95 & 634,30\% & 7998 & 0,0678 & 22,52\% &9126 &0,02343 &39.80\%  \\ \hline
+		d493.tsp & 111947 & 120,4769&219,83\% & 39969 & 0,4976 & 14,19\% &45300 &0,1063 &29.42\% \\ \hline
+		dsj1000.tsp & \scriptsize 551274242 &120,0012 &2854,36\% & 22291165 & 7,5382 & 19,46\% &25526005 &0,5358 &36.80\% \\ \hline
+		eil51.tsp&986 &120,0005 &131,46\% & 494 &0,0006 & 15,96\% &614 & 0,0009 &44.13\% \\ \hline
+		gr202.tsp&55127 &119,9998 &37,26\% & 46480 & 0,0406 & 15,74\% &52615 & 0,0189& 31.01\%\\ \hline
+		gr229.tsp&176212 & 120,0008&30,91\% & 153896 & 0,0493 & 14,33\% &179335 &0,0249 &33.23\% \\ \hline
+		kroA100.tsp& 164223 & 120,0003 & 671,65\% & 24942 & 0,0038 & 17,20\%&30536 &0,0014 &43.48\% \\ \hline
+		kroD100.tsp& 144125 &120,0012 &576,83\% &25204 & 0,0036 & 18,36\% &28599 &0,0017 &34.31\% \\ \hline
+		pcb442.tsp& 202233&120,4061 &298,27\% & 60834 & 0,3954 & 19,80\% &68841 &0,0901 & 35.57\%\\ \hline
+		ulysses16.tsp&6859 &0,5584 & 0,0\% & 7368 & 0,0001 & 7,42\%&7788 & 0,0001 & 13.54\%\\ \hline
+		ulysses22.tsp&7013 &59,4115 &0,0\% &  7709 & 0,0001 & 9,92\% &8308 &0,0001 &18.47\% \\ \hline		 
+     \caption{Risultati dei tre algoritmi implementati rispetto alla domanda 1}
 	\end{longtable}
-\end{center} 
+\end{center}
 
-\subsection{HeldKarp}
-L'algoritmo non presenta variazioni nell'implementazione rispetto all'algoritmo mostrato a lezione, dunque possiede una complessità di \comp{n^2 2^n}.
+\subsubsection{Altre informazioni interessanti}
+Mobilitati da curiosità abbiamo provato a variare il tempo di calcolo a disposione dell'algoritmo di Held e Karp, per vedere se le soluzioni che impiegavano più di due minuti ritornavano una soluzione migliore, oppure se, con meno tempo a disposizione, la soluzione ritornata risultava peggiore. Le tabelle sottostanti riportano quello che è stato ottenuto.
+\paragraph{Held-Karp con 1 minuto}
+\begin{center}
+	\begin{longtable}{|c|c|c|c|}	
+	\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endfirsthead
+		\multicolumn{4}{|c|}%
+		{\tablename\ \thetable\ \ --\  \textit{continuazione della pagina precedente}} \\
+		\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endhead
+		\hline \multicolumn{4}{|r|}{\textit{Continua nella pagina seguente}} \\
+		\endfoot
+		\endlastfoot
+berlin52 & 17441 & 60,706 & 131,25\% \\ \hline
+burma14 & 3323 & 0,1014 & 0,00\% \\ \hline
+ch150 & 47935 & 59,999 & 634,29\% \\ \hline
+d493 & 111947 & 60,598 & 219,83\% \\ \hline
+dsj1000 & 551274242 & 60,001 & 2854,35\% \\ \hline
+eil51 & 986 & 60,000 & 131,45\% \\ \hline
+gr202 & 55127 & 60,000 & 37,26\% \\ \hline
+gr229 & 176212 & 59,999 & 30,91\% \\ \hline
+kroA100 & 165018 & 60,000 & 675,38\% \\ \hline
+kroD100 & 146158 & 59,999 & 586,38\% \\ \hline
+pcb442 & 202517 & 59,999 & 298,82\% \\ \hline
+ulysses16 & 6859 & 0,3550 & 0,00\% \\ \hline
+ulysses22 & 7013 & 53,181 & 0,00\% \\ \hline
+		\caption{Risultati dell'algoritmo Held-Karp concedendo 1 minuto}
+	\end{longtable}
+\end{center}\vspace{-40pt}
+\paragraph{Held-Karp con 5 minuti}
+\begin{center}
+	\begin{longtable}{|c|c|c|c|}	
+	\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endfirsthead
+		\multicolumn{4}{|c|}%
+		{\tablename\ \thetable\ \ --\  \textit{continuazione della pagina precedente}} \\
+		\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endhead
+		\hline \multicolumn{4}{|r|}{\textit{Continua nella pagina seguente}} \\
+		\endfoot
+		\endlastfoot
+berlin52 & 17441 & 303,951 & 131,25\% \\ \hline
+burma14 & 3323 & 0,15270 & 0,00\% \\ \hline
+ch150 & 47935 & 316,682 & 634,29\% \\ \hline
+d493 & 111947 & 308,136 & 219,83\% \\ \hline
+dsj1000 & 551274242 & 306,492 & 2854,35\% \\ \hline
+eil51 & 984 & 300,463 & 130,98\% \\ \hline
+gr202 & 55127 & 305,269 & 37,26\% \\ \hline
+gr229 & 176212 & 312,290 & 30,91\% \\ \hline
+kroA100 & 162606 & 308,605 & 664,05\% \\ \hline
+kroD100 & 144125 & 314,625 & 576,83\% \\ \hline
+pcb442 & 202044 & 300,972 & 297,89\% \\ \hline
+ulysses16 & 6859 & 0,40430 & 0,00\% \\ \hline
+ulysses22 & 7013 & 57,7751 & 0,00\% \\ \hline
+		\caption{Risultati dell'algoritmo Held-Karp concedendo 5 minuti}
+	\end{longtable}
+\end{center}\vspace{-40pt}
+\paragraph{Held-Karp con 10 minuti}
+\begin{center}
+	\begin{longtable}{|c|c|c|c|}	
+	\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endfirsthead
+		\multicolumn{4}{|c|}%
+		{\tablename\ \thetable\ \ --\  \textit{continuazione della pagina precedente}} \\
+		\hline
+		\multirow{2}{*}{\textbf{Istanza}} & \multicolumn{3}{c|}{\textbf{Held-Karp}} \\ \cline{2-4}
+		 &\textbf{Soluzione}& \textbf{Tempo (s)} & \textbf{Errore} \\ \hline
+		\endhead
+		\hline \multicolumn{4}{|r|}{\textit{Continua nella pagina seguente}} \\
+		\endfoot
+		\endlastfoot
+berlin52 & 17441 & 603,349 & 131,25\% \\ \hline   
+burma14 & 3323 & 0,15163 & 0,00\% \\ \hline
+ch150 & 47885 & 606,479 & 633,53\% \\ \hline
+d493 & 111947 & 603,658 & 219,83\% \\ \hline
+dsj1000 & 550719964 & 611,369 & 2851,38\% \\ \hline
+eil51 & 963 & 601,293 & 126,05\% \\ \hline
+gr202 & 55125 & 605,391 & 37,26\% \\ \hline
+gr229 & 175982 & 603,008 & 30,74\% \\ \hline
+kroA100 & 161443 & 699,899 & 658,58\% \\ \hline
+kroD100 & 143960 & 605,555 & 576,05\% \\ \hline
+pcb442 & 202044 & 603,171 & 297,89\% \\ \hline
+ulysses16 & 6859 & 0,40640 & 0,00\% \\ \hline
+ulysses22 & 7013 & 58,3268 & 0,00\% \\ \hline
+		\caption{Risultati dell'algoritmo Held-Karp concedendo 10 minuti}
+	\end{longtable}
+\end{center}
 
-%TODO
-
-
-
+\paragraph{Conclusioni}

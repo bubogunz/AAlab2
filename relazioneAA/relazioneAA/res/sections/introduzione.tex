@@ -1,58 +1,64 @@
 \section{Introduzione}
-Il presente documento descrive le scelte architetturali ed implementative del secondo elaborato di laboratorio del corso di Algoritmi Avanzati. Di seguito, verrà offerta una panoramica sul lavoro svolto dagli studenti Nicola Carlesso e Federico Brian, riguardante lo studio ed il confronto dei tre diversi algoritmi visti a lezione per la risoluzione del problema \emph{Travelling Salesman Problem}\footnote{d'ora in poi TSP}:
+Il presente documento descrive le scelte architetturali ed implementative del secondo elaborato di laboratorio del corso di Algoritmi Avanzati. Di seguito, verrà offerta una panoramica sul lavoro svolto dagli studenti Nicola Carlesso e Federico Brian, riguardante lo studio ed il confronto di tre diversi algoritmi visti a lezione per la risoluzione del \emph{Travelling Salesman Problem}\footnote{d'ora in poi TSP}, definito come segue.
+
+\subsection{Problema TSP}
+\emph{\quotes{Date le coordinate $x,y$ di $N$ punti nel piano (i vertici) ed una funzone di peso $w(u,v)$ definita per tutte le coppie di punti (gli archi), trovare il ciclo semplice di peso minimo che visita tutti gli $N$ punti. La funzione peso $w(u,v)$ è definita come la distanza Euclidea o Geografica tra i punti $u$ e $v$. La funzione peso è simmetrica e rispetta la \textbf{disuguaglianza triangolare}\footnote{$\forall\,u,v,w\in V \text{ vale che } c(u,v) \leq c(u,w)+c(w,v) \Rightarrow c(<u,v>) \leq c(<u,w,v>)$}.}}
+
+\subsection{Tipologia di distanze}
+\par La distanza tra due punti $u$ e $v$ può essere:
 \begin{itemize}
-	\item l'algoritmo di Held e Karp (in seguito: \texttt{HeldKarp}) che ritorna la soluzione esatta del problema TSP con complessità \comp{n^2 2^n};
-	\item un algoritmo ottenuto da un' ''euristica costruttiva'', in particolar modo \texttt{CheapestInsertion}, ottenendo un algoritmo 2-approssimato per TSP;
-	\item l'algoritmo \texttt{TriangeTSP} che risolve il problema TSP con un algoritmo 2-approssimato attraverso la costruzione di un MST con l'assunzione che il grafo rispetti la disuguaglianza triangolare.
-\end{itemize}
+	\item \textbf{Euclidea:} dati due punti \texttt{(xa; ya)} e \texttt{(xb,yb)} la distanza tra di loro è calcolata come segue, arrotondando all'intero più vicino:\\ 
+	\image{0.9}{euc}{Calcolo della distanza Euclidea}
+	\item \textbf{Geografica:} se TSP è un problema da risolvere con distanze geografiche, allora i punti si trovano nella superficie terrestre, di raggio 6378.388 km. Le loro coordinate indicano la latitudine e la longitudine del corrispondente punto sul pianeta Terra: di seguito viene riportato il metodo utilizzato per calcolare questo tipo di distanza.\\
+	\image{0.89}{geo}{Calcolo della distanza Geografica}
+\end{itemize}\newpage
+Gli algoritmi da implementare per risolvere il problema rientrano in tre categorie:
+\begin{enumerate}
+	\item \textbf{Algoritmi esatti}, ovvero l'algoritmo di \textbf{Held e Karp}\footnote{d'ora in poi \texttt{HeldKarp}} che ritorna la soluzione esatta del problema TSP con complessità \comp{n^2 2^n};
+	\item \textbf{Euristiche costruttive}, cioè algoritmi che non possono dare nessun vincolo sulla soluzione ritornata. Essi arrivano alla soluzione procedendo un vertice alla volta seguendo delle regole prefissate. In particolar modo vedremo l'euristica \textbf{Cheapest Insertion}\footnote{d'ora in poi \texttt{CheapestInsertion}} che, in caso la disuguaglianza triangolare venga rispettata, si dimostra approssimare la soluzione al più di un fattore 2. Generalmente, quando la disuguaglianza triangolare non viene rispettata, è possibile dimostrare che questo algoritmo permette di trovare una soluzione $\log (n)$-approssimata a TSP.
+	\item \textbf{Algoritmo 2-approssimato}, cioè un algoritmo di approssimazione che può ritornare una soluzione al più 2 volte peggiore di quella ritornata da un algoritmo esatto. Dato che la disuguaglianza triangolare viene rispettata, vedremo l'algoritmo \textbf{Triangle TSP}\footnote{d'ora in poi \texttt{TriangeTSP}} che risolve il problema TSP con un algoritmo 2-approssimato attraverso la costruzione di un MST\footnote{\emph{Minimum Spanning Tree}}.
+\end{enumerate}
  Infine, verranno esposti ed adeguatamente discussi i risultati ottenuti.
- \newpage
+ 
 \section{Scelta del linguaggio di programmazione}
-Per lo svolgimento di questo \emph{assignment} è stato scelto, come linguaggio di programmazione Java nella sua versione 8. La scelta è derivata, principalmente, da due fattori: 
+Per lo svolgimento di questo \emph{assignment}, come per il precedente, è stato scelto Java nella sua versione 8 come linguaggio di programmazione. La scelta è derivata, principalmente, da due fattori: 
 \begin{itemize}
 	\item è stato sia studiato durante il percorso di laurea triennale, sia approfondito autonomamente da entrambi;
-	\item in Java, è possibile utilizzare riferimenti ad oggetti piuttosto che oggetti stessi. Questo ha permesso un'implementazione degli algoritmi che si potrebbe definire \quotes{accademica}, perché coerente con la complessità dichiarata e semanticamente vicina allo pseudocodice visto a lezione. 
+	\item in Java, è possibile utilizzare riferimenti ad oggetti piuttosto che oggetti stessi. Questo ha permesso un'implementazione degli algoritmi che si potrebbe definire \quotes{accademica}, perché coerente con la complessità dichiarata e semanticamente vicina allo pseudocodice visto a lezione. Sono infatti evitate complessità aggiuntive derivanti da inavvertite copie profonde.
 \end{itemize}
-Questo ultimo punto ha bisogno di essere sviluppato ulteriormente per risultare chiaro. In una prima implementazione degli algoritmi , utilizzando l'approccio \textit{object-oriented} senza l'utilizzo di riferimenti, ci siamo accorti che il codice aggiungeva complessità, anche abbastanza pesanti, rispetto allo pseudocodice illustrato a lezione. Questo accadeva perché inizialmente sono stati utilizzati costruttori di copia profonda che, oltre a raddoppiare l'utilizzo di memoria, aggiungevano una complessità d'ordine rispetto al numero dei lati, al numero dei nodi oppure rispetto ad entrambe. \eqcapo
-Ad esempio, in una prima implementazione dell'algoritmo \texttt{NaiveKruskal}, ad ogni iterazione del ciclo principale, veniva creato un nuovo grafo, copiando il grafo ottenuto aggiungendo iterativamente un lato alla volta. Il costruttore di copia profonda provvedeva a creare due nuove liste: una di nodi ed una di lati, entrambi aventi le medesime caratteristiche delle liste del grafo da cui sono stati copiati.\eqcapo
- Questo ci ha portato a riflettere sul significato dello pseudocodice dei tre diversi algoritmi e ci ha guidato verso uno sviluppo di un codice che:
- \begin{itemize}
- 	\item mantenesse la caratteristica di facile leggibilità propria della programmazione ad oggetti;
-	\item fosse coerente con le complessità dichiarate a lezione.
- \end{itemize}
-Questi obiettivi sono stati raggiunti agendo su riferimenti di oggetti piuttosto che su oggetti stessi.
-\newpage
+
 \section{Scelte implementative}
-Come specificato nel precedente paragrafo, nell'implementazione dei tre algoritmi si è cercato di creare meno oggetti possibile usando per lo più riferimenti. Questo ha permesso non solo un risparmio in termini di memoria ma anche di prestazioni: nell'implementazione abbiamo infatti cercato di creare strutture dati che risparmiassero quanta più memoria possibile, dato che l'algoritmo \textit{HeldKarp}, oltre ad essere computazionalmente oneroso, richiede anche l'utilizzo di molta memoria. Difatti, nell'eseguire l'esecuzione del \texttt{main}, è necessario richiedere l'utilizzo di più memoria RAM per il corretto funzionamento dell'algoritmo attraverso il flag \texttt{-Xmx8192m}.
+Come specificato nel precedente paragrafo, nell'implementazione dei tre algoritmi si è cercato di creare meno oggetti possibile usando quasi esclusivamente riferimenti. Questo ha permesso non solo un risparmio in termini di memoria ma anche di prestazioni: nell'implementazione abbiamo infatti cercato di creare strutture dati che risparmiassero quanta più memoria possibile, dato che l'algoritmo \textit{HeldKarp}, oltre ad essere computazionalmente oneroso, richiede anche l'utilizzo di molta memoria. Difatti, nell'eseguire l'esecuzione del \texttt{main}, è necessario richiedere l'utilizzo di più memoria RAM per il corretto funzionamento dell'algoritmo attraverso il flag \texttt{-Xmx6500m}.
 
 Benché il codice sia stato adeguatamente commentato\footnote{come si può vedere dal \texttt{Javadoc}, automaticamente generato e accessibile all'interno della cartella \texttt{JavaLab2/doc/}, aprendo il file \texttt{index.html} con il browser preferito}, di seguito è riportata una \emph{summa} delle caratteristiche di ogni classe implementata che non compaiono nella documentazione, ripartita per \texttt{package}.
 
 \subsection{Modello}
 Le componenti del modello, vale a dire le classi presenti all'interno del \texttt{package} chiamato \texttt{lab2.model}, comprendono tutte le strutture dati utilizzate nella risoluzione dei tre problemi assegnati. 
 \begin{itemize}
-	\item \texttt{AdjacentMatrix}: matrice di adiacenza usata per rappresentare i grafi. Tale matrice si presenta come una matrice triangolare inferiore, contenendo \texttt{n - 1} array di lunghezza crescente. Tale scelta è stata fatta per risparmiare memoria evitando di costruire una matrice quadrata. Tale classe presenta i metodi standard \texttt{get(u,v)} e \texttt{set(u,v)}, per ottenere ed impostare il peso del lato (u,v), ed un motodo \texttt{getMinAdjacentVertexWeightIndex(v)} per ottenere il lato con peso minore che ha per estremo il vertice \textit{v};
+	\item \texttt{AdjacentMatrix}: matrice di adiacenza usata per rappresentare i grafi, che si presenta come una normale matrice $n\times n$ simmetrica rispetto alla sua diagonale nulla\footnote{poiché non esistono cappi}. Gli algoritmi \texttt{HeldKarp}, \texttt{CheapestInsertion} e \texttt{TriangleTSP}, difatti, la trattano come tale. In verità è stata implementata come matrice triangolare inferiore, contenendo \texttt{n - 1} array di lunghezza crescente: questa scelta è stata fatta per risparmiare memoria, evitando di costruire una matrice quadrata. Tale classe presenta i metodi standard \texttt{get(u,v)} e \texttt{set(u,v)}, per ottenere ed impostare il peso del lato (u,v), ed un motodo \texttt{getMinAdjacentVertexWeightIndex(v)} per ottenere il lato con peso minore che ha per estremo il vertice \textit{v};
 	\item \texttt{Graph}: contiene esclusivamente una matrice di adiacenza, dato che tutte le informazioni necessarie dei nodi (i quali iniziano ad essere contati da 0) e dei lati possono essere ottenute analizzando la matrice di adiacenza;
 	\item \texttt{Node}: classe non utilizzata direttamente da \textit{Graph}, ma usata per costruire il MST (Minimum Spanning Tree) per l'algoritmo di 2-approssimazione richiesto. Essa dunque contiene solo l'\textit{ID}, un riferimento al nodo padre e una lista di riferimenti ai nodi figli;
 	\item \texttt{Edge}: come la classe \textit{Node}, anche \textit{Edge} viene utilizzata solo per costruire l'MST attraverso l'algoritmo \textit{Kruskal} implementato nello scorso assignement.
 	\item \texttt{DisjointSet}: questa struttura dati gestisce partizioni di oggetti, rappresentati con un numero intero che li identifica. Ogni oggetto può stare in una sola delle partizioni degli insiemi disgiunti presenti. La struttura dati è utilizzata all'interno dell'algoritmo \texttt{Kruskal}.
-	\item \texttt{TSP}: contiene tutti gli algoritmi richiesti dagli assignment, più le funzioni ausiliarie per il corretto funzionamento di questi ultimi, in particolar modo è importante menzionare
+	\item \texttt{TSP}: contiene tutti gli algoritmi richiesti dagli assignment, più le funzioni ausiliarie per il corretto funzionamento di questi ultimi, in particolar modo è importante menzionare:
 	\begin{itemize}
-		\item \texttt{deepCopyWithoutV}:
-		\item \texttt{getResults}:
+		\item \texttt{copyWithoutV}: funzione \textit{utility} di \texttt{HeldKarpCore} che serve a ricreare l'insieme $S\setmin \{v\}$, necessaria all'algoritmo di Held e Karp per proseguire con le chiamate ricorsive;
+		\item \texttt{getResults}: funzione che ritorna $\left(d[0,V], T\right)$, cioè il valore del ciclo hamiltoniano di costo minimo disponibile dopo $T$ minuti di computazione;
 		\item \texttt{preorder}: metodo utilizzato per l'algoritmo di 2-approssimazione \textit{Tree\_TSP}, per ottenere una lista pre-ordinata dei nodi del MST ottenuto dal metodo \texttt{Kruskal}.
 	\end{itemize}
-	\textit{TSP} contiene inoltre tre campi dati per il corretto funzionamento di \textit{HeldKarp}
+	\textit{TSP} contiene inoltre tre campi dati, utilizzati dall'algoritmo \texttt{HeldKarp}:
 	\begin{itemize}
-		\item \texttt{d}:%TODO
-		\item \texttt{pi}:%TODO
-		\item \texttt{w}:%TODO
+		\item \texttt{d}: struttura dati che rappresenta $\left(d[v, S],\text{\texttt{cost}}\right)$, cioè che mappa la coppia $<\!\!v, S\!\!>$ con il corrispondente peso del cammino minimo che parte da 0 e termina in $v$, visitando tutti i nodi in $S$. Per memorizzare il valore di $d[v,S]$, quindi, si inserisce una nuova chiave $<\!\!v, S\!\!>$ in \texttt{d} e la si mappa con il rispettivo costo minimo calcolato. Per recuperare un valore, invece, si accede alla struttura dati con la chiave $<\!\!v, S\!\!>$, chiedendo quale valore sia stato ivi memorizzato. Nell'implementazione, quindi, è stato scelto di rappresentarla con il tipo \texttt{HashMap<Pair<Integer, ArrayList<Integer>>, Integer>};
+		\item \texttt{pi}: struttura dati dello stesso tipo e del tutto simile a \texttt{d}, che mappa la medesima chiave con un valore intero che rappresenta il nodo predecessore di $v$;
+		\item \texttt{w}: variabile segnaposto della matrice di adiacenza del grafo su cui calcolare \texttt{HeldKarp}, incapsulata nella classe \texttt{TSP} al solo scopo di offrire maggior leggibilità e coerenza con lo pseudocodice visto in classe.
 	\end{itemize}
 \end{itemize} 
 
 \subsection{Algoritmi}
 Il package \texttt{lab2.algorithm} contiene un'unica classe, \texttt{TSP}, che permette di risolvere il problema TSP utilizzando gli algoritmi \texttt{HeldKarp}, \texttt{CheapestInsertion} e \texttt{Tree\_TSP}.
 \begin{itemize}
-	\item \texttt{HeldKarp}: in combinazione col metodo \texttt{HeldKarpCore} non presenta grandi differenze rispetto allo pseudocodice fornito a lezione, con la sola distinzione di un \texttt{if} necessario per la gestione dei \textit{Thread} nel caso in cui la computazione dovesse richiedere più di due minuti;%TODO
+	\item \texttt{HeldKarp}: funzione adibita all'inizializzazione e alla chiamata dell'algoritmo di Held e Karp. Si occupa di preparare l'ambiente necessario alla funzione \texttt{HeldKarpCore} e di catturare eventuali eccezioni lanciate dalla JVM\footnote{Java Virtual Machine} dovute alla mancanza di memoria (\texttt{OutOfMemoryException});
+	\item \texttt{HeldKarpCore}: funzione principale che implementa l'algoritmo di Held e Karp, del tutto coerente con lo pseudocodice visto a lezione. L'unica differenza è, naturalmente, la gestione degli \textit{interrupt}: se una certa istanza di TSP dovesse metterci più del tempo a disposizione $T$\footnote{come avviene nella maggior parte dei casi}, l'algoritmo interrompe immediatamente ogni ulteriore visita del grafo lasciando comunque l'opportunità di memorizzare i risultati finora calcolati. Questo comporta, a volte, un ritardo sui tempi di computazione consentiti: ciò non è visto dagli studenti come un problema poiché, di fatto, la computazione viene interrotta quindi non si è in presenza di alcun \textit{cheat}.
 	\item \texttt{CheapestInsertion}: l'algoritmo fa uso del metodo \texttt{getMinAdjacentVertexWeightIndex} per trovare il lato col peso minore che ha come estremo il nodo 0. Viene dunque creato un array di nodi che rappresenta il cammino per TSP ed un array coi nodi ancora non visitati. L'algoritmo dunque esegue un ciclo fino a quando il cammino non raggiunge lunghezza $n+1$ ed trova per ogni nodo non visitato e per ogni lato presente nel cammino trovato fino a quel momento, il minore \texttt{minCost}, indicando che nodo k non visitato deve essere inserito nel cammino e in che posizione. L'algoritmo ha complessità \comp{n^3};
 	\item \texttt{Tree\_TSP}: l'algoritmo, attraverso l'algoritmo \textit{Kruskal}, ottiene prima il MST sotto forma di \textit{Node}, un nodo che possiede la lista di puntatori ai nodi figli, dopodiché ottiene la lista pre-oridinata dei nodi dell'albero ottenuto. L'algoritmo ha complessità \comp{m\lg n + n}.
 \end{itemize}
@@ -69,6 +75,7 @@ Il package \texttt{lab1.main} contiene la classe \texttt{Main}, responsabile del
 		\item \texttt{2Approx} l'algoritmo che attraverso il calcolo del MST calcola una soluzione per TSP con 2-approssimazione.
 	\end{itemize}
     \item la funzione \texttt{test}, che esegue alcuni, banali, test sulle strutture dati o algoritmi utilizzati come \textit{AdjacentMatrix} e \textit{Kruskal}.
+    \item le funzioni \texttt{printHeapInfo} e \texttt{formatSize} che sono adibite, rispettivamente, a fornire informazioni e rappresentare l'utilizzo di memoria degli algoritmi.
 \end{itemize}
 
 \subsection{Test}
