@@ -1,17 +1,17 @@
 \section{Conclusioni}
-In questa sezione sono analizzate le performance dell'algoritmo \texttt{HeldKarp} e viene effettuato un confronto delle performance tra \texttt{Tree\_TSP} e \texttt{CheapestInsertion}.
+In questa sezione sono analizzate le performance dell'algoritmo \texttt{HeldKarp} e viene effettuato un confronto delle performance tra \texttt{TriangularTSP} e \texttt{CheapestInsertion}.
 
 \subsection{HeldKarp}
 %TODO
 
-\subsection{CheapestInsertion e Tree\_TSP}
-Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultati differenti: \texttt{CheapestInsertion} richiede più tempo per essere eseguito rispetto a \texttt{Tree\_TSP}, ma ottene un errore relativo minore. Per capire dunque quale dei due algoritmi sia più efficiente ed efficacie, è possibile osservare la Tabella~\ref{rate} che mostra il prodotto tra l'errore relativo e il tempo di esecuzione. Facendo una media dei valori è possibile vedere come l'utilizzo di \texttt{Tree\_TSP} sia più vantaggioso, infatti il prodotto ottenuto per \texttt{CheapestInsertion} è ~13, mentre per \texttt{Tree\_TSP} è ~2. Questo perché, \texttt{Tree\_TSP} ottiene in media un errore relativo più alto (~32\%) rispetto a \texttt{CheapestInsertion} (~16\%), ma possiede un tempo di esecuzione molto più basso. Dunque per grafi di grande taglia è consigliato utilizzare \texttt{Tree\_TSP}.
+\subsection{CheapestInsertion e TriangularTSP}
+Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultati differenti: \texttt{CheapestInsertion} richiede più tempo per essere eseguito rispetto a \texttt{TriangularTSP}, ma ottene un errore relativo minore. Per capire dunque quale dei due algoritmi sia più efficiente ed efficacie, è possibile osservare la Tabella~\ref{rate} che mostra il prodotto tra l'errore relativo e il tempo di esecuzione. Facendo una media dei valori è possibile vedere come l'utilizzo di \texttt{TriangularTSP} sia più vantaggioso, infatti il prodotto ottenuto per \texttt{CheapestInsertion} è ~13, mentre per \texttt{TriangularTSP} è ~2. Questo perché, \texttt{TriangularTSP} ottiene in media un errore relativo più alto (~32\%) rispetto a \texttt{CheapestInsertion} (\textasciitilde 16\%), ma possiede un tempo di esecuzione molto più basso. Dunque per grafi di grande taglia è consigliabile utilizzare \texttt{TriangularTSP}.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		\textbf{N.} & \textbf{Name Graph} & \textbf{CheapestInsertion ratio} & \textbf{Tree\_TSP ratio}\\ 
+		\textbf{N.} & \textbf{Name Graph} & \textbf{CheapestInsertion ratio} & \textbf{TriangularTSP ratio}\\ 
 		\hline
 		1 & berlin52 & 0.2126 & 0.3175\\
 		\hline
@@ -42,6 +42,6 @@ Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultat
 		& \textbf{Average} & 13.36 & 1.91\\
 		\hline
 	\end{tabular}
-	\caption{Rapporto Errore-(Tempo di computazione) tra CheapestInsertion e Tree\_TSP}
+	\caption{Rapporto Errore-(Tempo di computazione) tra CheapestInsertion e TriangularTSP}
 	\label{rate}
 \end{table} 
