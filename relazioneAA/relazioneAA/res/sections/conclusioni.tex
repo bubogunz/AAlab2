@@ -5,43 +5,11 @@ In questa sezione sono analizzate le performance dell'algoritmo \texttt{HeldKarp
 %TODO
 
 \subsection{CheapestInsertion e TriangularTSP}
-Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultati differenti: \texttt{CheapestInsertion} richiede più tempo per essere eseguito rispetto a \texttt{TriangularTSP}, ma ottene un errore relativo minore. Per capire dunque quale dei due algoritmi sia più efficiente ed efficacie, è possibile osservare la Tabella~\ref{rate} che mostra il prodotto tra l'errore relativo e il tempo di esecuzione. Facendo una media dei valori è possibile vedere come l'utilizzo di \texttt{TriangularTSP} sia più vantaggioso, infatti il prodotto ottenuto per \texttt{CheapestInsertion} è ~13, mentre per \texttt{TriangularTSP} è ~2. Questo perché, \texttt{TriangularTSP} ottiene in media un errore relativo più alto (~32\%) rispetto a \texttt{CheapestInsertion} (\textasciitilde 16\%), ma possiede un tempo di esecuzione molto più basso. Dunque per grafi di grande taglia è consigliabile utilizzare \texttt{TriangularTSP}.
+Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultati differenti: \texttt{CheapestInsertion} richiede più tempo per essere eseguito rispetto a \texttt{TriangularTSP}, ma ottiene un errore relativo minore. Per capire dunque quale dei due algoritmi sia più efficiente ed efficacie, è possibile osservare gli istogrammi a Figura~\ref{confronto} che mostra prima la differenza del tempo di esecuzione dei due algoritmi su scala logaritmica per i vari grafi, poi il tempo di esecuzione su una scala normale ed infine il rispettivo errore relativo. Confrontando il primo e terzo istogramma è possibile vedere come per un aggiunta di tempo di compilazione relativamente basso si ottiene un notevole miglioramento per l'errore relativo, infatti \texttt{TriangularTSP} raggiunge in media un errore relativo più alto ($\sim$32\%) rispetto a \texttt{CheapestInsertion} ($\sim$16\%). Se si osserva il secondo istogramma si può vedere come con grafi di taglia maggiore il tempo di esecuzione per \texttt{CheapestInsertion} aumenti esponenzialmente rispetto a \texttt{TriangularTSP}, basti osservare il tempo di esecuzione per i grafi \textit{d449} e \textit{dsj1000}.  Dunque per grafi di grande taglia è consigliabile utilizzare \texttt{TriangularTSP}, altrimenti \texttt{CheapestInsertion}.
 
-\begin{table}[H]
+\begin{figure}
 	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		\textbf{N.} & \textbf{Name Graph} & \textbf{CheapestInsertion ratio} & \textbf{TriangularTSP ratio}\\ 
-		\hline
-		1 & berlin52 & 0.2126 & 0.3175\\
-		\hline
-		2 & burma14 & 0.0022 & 0.0042\\
-		\hline
-		3 & ch150 & 1.6794 & 1.0099\\
-		\hline
-		4 & d493 & 8.0955 & 3.1753\\
-		\hline
-		5 & dsj1000 & 153.453 & 15.9731\\
-		\hline
-		6 & eil51 & 0.1554 & 0.0245\\
-		\hline
-		7 & gr202 & 1.3764 & 0.5801\\
-		\hline
-		8 & gr229 & 0.7594 & 0.6749\\
-		\hline
-		9 & kroA100 & 0.0702 & 0.0639\\
-		\hline
-		10 & kroD100 & 0.0744 & 0.0674\\
-		\hline
-		11 & pcb442 & 7.7838 & 2.9663\\
-		\hline
-		12 & ulysses16 & 0.0002 & 0.0008\\
-		\hline
-		13 & ulysses22 & 0.0009 & 0.0017\\
-		\hline
-		& \textbf{Average} & 13.36 & 1.91\\
-		\hline
-	\end{tabular}
-	\caption{Rapporto Errore-(Tempo di computazione) tra CheapestInsertion e TriangularTSP}
-	\label{rate}
-\end{table} 
+	\includegraphics[width=\textwidth]{confronto}
+	\caption{Confronto tra \texttt{CheapestInsertion} e \texttt{TriangularTSP}}
+	\label{confronto}
+\end{figure}
