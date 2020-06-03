@@ -176,7 +176,7 @@ public class Main {
 						for(int i=0; i<minutes*1200 && !future.isDone(); ++i)
 							Thread.sleep(50);
 					else 
-						Thread.sleep(minutes*60000);
+						Thread.sleep(30000);
 				
 					//Sets the "interrupted flag" that will break computation of the thread gracefully
 					future.cancel(true);

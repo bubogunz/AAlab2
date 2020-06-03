@@ -5,6 +5,7 @@ Questa sezione risponderà alla Domanda 1: verranno riportati sotto forma di tab
 Eseguite i tre algoritmi che avete implementato (Held-Karp, euristica costruttiva e 2-approssimato) sui 13 grafi del dataset. Mostrate i risultati che avete ottenuto in una tabella come quella sottostante. Le righe della corrispondono alle istanze del problema. Le colonne mostrano, per ogni algoritmo, il peso della soluzione trovata, il tempo di esecuzione e l'errore relativo calcolato come $(SoluzioneTrovata - SoluzioneOttima)/SoluzioneOttima$. Potete aggiungere altre informazioni alla tabella che ritenete interessanti. 
 \image{1}{estab}{Esempio di tabella riportante i risultati ottenuti}
 \subsubsection{Svolgimento}
+\label{tab}
 \begin{center}
 	\scriptsize
 	\begin{longtable}{|c|c|c|c|c|c|c|c|c|c|}	
@@ -39,8 +40,10 @@ Eseguite i tre algoritmi che avete implementato (Held-Karp, euristica costruttiv
 	\end{longtable}
 \end{center}
 
+
 \subsection{Held-Karp}
 Mobilitati da curiosità abbiamo provato a variare il tempo di calcolo a disposizione dell'algoritmo di Held e Karp, per vedere se le soluzioni che impiegavano più di due minuti ritornavano una soluzione migliore, oppure se, con meno tempo a disposizione, la soluzione ritornata risultava peggiore. Le tabelle sottostanti riportano quello che è stato ottenuto.
+
 \paragraph{Held-Karp con 1 minuto}
 \begin{center}
 	\begin{longtable}{|c|c|c|c|}	
@@ -139,3 +142,38 @@ ulysses22 & 7013 & 58,3268 & 0,00 \\ \hline
 \end{center}
 
 \paragraph{Conclusioni}
+La variazione del tempo concesso per il calcolo dell'algoritmo \texttt{HeldKarp} non ha avuto alcun miglioramento né peggioramento per sei istanze di TSP su tredici. Per tre di loro, precisamente \texttt{burma14.tsp, ulysses16.tsp e ulysses22.tsp}, questo accade perché la soluzione ottima viene già trovata entro un intervallo di tempo relativamente basso, quindi non considerato perché ritenuto poco interessante: la più \quotes{impegnativa} delle tre, \texttt{ulysses22.tsp}, è in grado di ritornare la soluzione ottima in poco meno di un minuto. Le altre due in meno di un secondo.\eqcapo
+Per quanto riguarda le rimanenti sette istanze di TSP, vale a dire \texttt{ch150.tsp, dsj1000.tsp, eil51.tsp, gr202.tsp, gr229.tsp, kroA100.tsp, kroD100.tsp} invece si è registrato un aumento della qualità della soluzione ritornata, all'aumentare del tempo di computazione concesso. I grafici sottostanti riportano i dati inseriti nelle tabelle di cui sopra, mostrando più chiaramente la differenza degli errori relativi calcolati come $(SoluzioneTrovata - SoluzioneOttima)/SoluzioneOttima$,  ripartito in base alle diverse tempistiche assegnate.
+\paragraph*{ch150.tsp}
+\image{0.7}{ch150}{Variazione dell'errore relativo in ch150}
+\paragraph*{dsj1000.tsp}
+\image{0.7}{dsj1000}{Variazione dell'errore relativo in dsj1000}
+\paragraph*{eil51.tsp}
+\image{0.7}{eil51}{Variazione dell'errore relativo in eil51}
+\paragraph*{gr202.tsp}
+\image{0.7}{gr202}{Variazione dell'errore relativo in gr202}
+\textbf{Nota:} in questo grafico, essendo troppo piccola la variazione, i due valori riportati sull'asse delle ordinate vanno sommati con il numero scritto in notazione scientifica in alto a sinistra.
+\paragraph*{gr229.tsp}
+\image{0.7}{gr229}{Variazione dell'errore relativo in gr229}
+\paragraph*{kroA100.tsp}
+\image{0.7}{kroA100}{Variazione dell'errore relativo in kroA100}
+\paragraph*{kroD100.tsp}
+\image{0.7}{kroD100}{Variazione dell'errore relativo in kroD100}
+\mbox{}\eqcapo
+
+Come ci si poteva aspettare, concedendo più tempo di computazione all'algoritmo \texttt{HeldKarp}, abbiamo registrato una probabilità non banale che l'algoritmo migliori le sue \emph{performance}: 
+\begin{itemize}
+	\item Non considerando le tre istanze di TSP in cui l'algoritmo riesce a trovare la soluzione ottima sotto al minuto, si rimane quindi con dieci istanze: \texttt{berlin52.tsp, ch150.tsp, d493.tsp, dsj1000.tsp, eil51.tsp, gr202.tsp, gr229.tsp, kroA100.tsp, kroD100.tsp} e \texttt{pcb442.tsp}.
+	\item Sette di loro hanno un miglioramento della soluzione ritornata $\Rightarrow$ \textbf{70\%} delle possibilità che \texttt{HeldKarp} restituisca una soluzione più vicina alla soluzione ottima all'aumentare del tempo concesso.
+\end{itemize}
+Seppure ci sia chiaro che non sia corretto derivare giudizi generali di qualsiasi tipo avendo a disposizione così poche istanze di TSP, riteniamo di aver ottenuto una percentuale davvero alta, di cui si debba tenere conto, risultato sperimentale che conferma ciò che ci aspettavamo.\acapo
+
+Crediamo che, alla luce di quanto detto finora, sia il caso di chiederci: vale la pena concedere fino a dieci minuti per trovare una soluzione migliore?
+\begin{itemize}
+	\item La risposta che ci siamo dati è, non sorprendentemente, \textbf{dipende}: se il grafo ricavato dall'istanza di TSP possiede un numero di nodi $n$:
+	\begin{itemize}
+		\item $0< n \leq 22 $ allora assegnare più tempo a \texttt{HeldKarp} \textbf{è indifferente}, in quanto l'algoritmo ritorna una soluzione ottima in meno di un minuto (quindi si ferma in ogni caso);\newpage
+		\item $23 \leq n < 52$ allora assegnare più tempo a \texttt{HeldKarp}\textbf{ probabilmente non conviene}, perché impiegando invece l'euristica \texttt{CheapestInsertion} si ottengono risultati statisticamente migliori (vedi tabella \ref{tab}). Ad ogni modo, occorre precisare che per valori di $n$ immediatamente successivi a 22, invece, \textbf{probabilmente conviene} lasciare più tempo all'algoritmo, perché potrebbe ritornare una soluzione ottima entro 10 minuti.
+		\item $ n\geq 52$ allora assegnare più tempo a \texttt{HeldKarp} \textbf{sicuramente non conviene}, perché abbiamo sperimentato che, per ogni istanza di TSP, risultati migliori si possono ottenere impiegando l'euristica \texttt{CheapestInsertion}.
+	\end{itemize}
+\end{itemize}
