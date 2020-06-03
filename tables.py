@@ -43,7 +43,7 @@ if heuristic.mode == "r" and tree.mode == "r":
     width = 0.35
     degree=30
     figure, (ax1, ax2, ax3) = plt.subplots(3,1, figsize=(8,8))
-    ax1.bar(x + width/2, time_tree, width, label="TriangularTree")
+    ax1.bar(x + width/2, time_tree, width, label="TriangleTSP")
     ax1.bar(x - width/2, time_heuristic, width, label="CheapestInsertion")
     ax1.set_yscale("log")
     ax1.set_xticks(x)
@@ -52,7 +52,7 @@ if heuristic.mode == "r" and tree.mode == "r":
     ax1.legend()
     ax1.set_title("Time of execution (log scale)")
 
-    ax2.bar(x + width/2, time_tree, width, label="TriangularTree")
+    ax2.bar(x + width/2, time_tree, width, label="TriangleTST")
     ax2.bar(x - width/2, time_heuristic, width, label="CheapestInsertion")
     ax2.set_xticks(x)
     ax2.set_xticklabels(name_heuristic, rotation=degree)
@@ -60,7 +60,7 @@ if heuristic.mode == "r" and tree.mode == "r":
     ax2.legend()
     ax2.set_title("Time of execution")
 
-    ax3.bar(x + width/2, error_tree, width, label="TriangularTree")
+    ax3.bar(x + width/2, error_tree, width, label="TriangleTSP")
     ax3.bar(x - width/2, error_heuristic, width, label="CheapestInsertion")
     ax3.set_xticks(x)
     ax3.set_xticklabels(name_heuristic, rotation=degree)
