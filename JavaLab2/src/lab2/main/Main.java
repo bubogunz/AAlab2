@@ -11,29 +11,26 @@ import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import lab2.algorithm.TSP;
 import lab2.model.Distancies;
 import lab2.model.Graph;
-import lab2.test.TestAdjacentMatrix;
 import lab2.test.TestKruskal;
 import lab2.test.TestTSP;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		//dare l'opzione -Xmx8192m per dire alla JVM di riservare 8GB di RAM (serve a HeldKarp) 
-//		printHeapInfo();
+		// printHeapInfo();
 		
 		compute("HeldKarp"); 
-		// test("CheapestInsertion");
+		// test();
 	}
 
 	public static void printHeapInfo() {
@@ -196,7 +193,7 @@ public class Main {
 					cost = tsp.CheapestInsertion();
 					break;
 				case "2Approx":
-					cost = tsp.Tree_TSP();
+					cost = tsp.TriangularTSP();
 					break;
 				default:
 					throw new InvalidParameterException("Wrong choice of algorithm");	
@@ -235,21 +232,7 @@ public class Main {
 		}
 	}
 
-	/**
-	 * @param structure: the structure used in TSP algorithms to test. This would be:
-	 * - AdjacentMatrix
-	 * - Kruskal
-	 * - CheapestInserion
-	*/
-	static void test(String structure) throws InterruptedException {
-		switch(structure){
-			case "AdjacentMatrix":
-				TestAdjacentMatrix.test();
-				break;
-			case "Kruskal":
-				TestKruskal.test();
-				break;
-			default:
-		}
+	static void test(){
+		TestKruskal.test();
 	}
 }

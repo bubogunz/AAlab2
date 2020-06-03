@@ -18,6 +18,6 @@ public class TestKruskal {
         g.setAdjacentmatrixWeight(3, 4, 1);
         TSP tsp = new TSP(g);
         // output: 0 1 2 4 3 0 cost: 8
-        System.out.println("cost: " + tsp.Tree_TSP());
+        System.out.println("cost: " + tsp.TriangularTSP());
     }
 }

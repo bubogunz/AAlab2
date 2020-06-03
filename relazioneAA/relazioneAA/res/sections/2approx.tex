@@ -1,0 +1,9 @@
+\subsection{TriangleTSP}
+
+L'algoritmo crea il circuito per TSP attraverso la lista preordinata dei nodi del MST ottenuto dall'algoritmo \texttt{Kruskal}. Tale algoritmo costruisce un albero la cui radice è un'istanza della classe \texttt{Node}, che non ha niente a che fare con la classe \texttt{Graph} ed è utilizzata esclusivamente dall'algoritmo \texttt{Kruskal}. Un discorso analogo vale per la classe \texttt{Edge} usata solamente dall'algoritmo \texttt{Kruskal} per ottenere una lista ordinata per peso dei lati del grafo.
+
+Dato $n=|V|$ e $m=|E|$, l'algoritmo \texttt{TriangleTSP}, dato utilizza \texttt{Kruskal}, ha una complessità \comp{m\log n}.
+
+L'algoritmo è 2-approssimazione per TSP, e per i grafi forniti ottiene risultati con un errore relativo al massimo del 45\%, impiegando un tempo di esecuzione di $\sim$0.5 secondi. Dunque un algoritmo molto efficiente.
+
+\image{1}{triangular}{Snipped del codice per \texttt{TriangleTSP}}

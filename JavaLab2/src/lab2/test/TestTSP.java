@@ -45,7 +45,7 @@ public class TestTSP {
             myReader.close();
             double percent = (cost - solution)/(double) solution * 100;
             DecimalFormat f = new DecimalFormat("##.00");
-            fw.write(f.format(percent)+ "\n");
+            fw.write(f.format(percent)+ "\t\n");
             
         } catch (IOException e) {
             e.printStackTrace();
