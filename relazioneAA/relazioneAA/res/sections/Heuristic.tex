@@ -1,50 +1,8 @@
-\subsection{Heuristic}
+\subsection{CheapestInsertion}
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{N.} & \textbf{Name Graph} & \textbf{TSP cost} & \textbf{Time (s)} & \textbf{Error (\%)}\\ 
-		\hline
-		1 & berlin52 & 9004 & 0.0096012 & 19.38
-		\\
-		\hline
-		2 & burma14 & 3588 & 2.702E-4 & 7.97
-		\\
-		\hline
-		3 & ch150 & 7998 & 0.0677773 & 22.52
-		\\
-		\hline
-		4 & d493 & 39969 & 0.4976069 & 14.19
-		\\
-		\hline
-		5 & dsj1000 & 22291165 & 7.5381809 & 19.46
-		\\
-		\hline
-		6 & eil51 & 494 & 5.527E-4 & 15.96
-		\\
-		\hline
-		7 & gr202 & 46480 & 0.0405677 & 15.74
-		\\
-		\hline
-		8 & gr229 & 153896 & 0.0492992 & 14.33
-		\\
-		\hline
-		9 & kroA100 & 24942 & 0.0038489 & 17.20
-		\\
-		\hline
-		10 & kroD100 & 25204 & 0.0036283 & 18.36
-		\\
-		\hline
-		11 & pcb442 & 60834 & 0.3953886 & 19.80
-		\\
-		\hline
-		12 & ulysses16 & 7368 & 2.58E-5 & 7.42
-		\\
-		\hline
-		13 & ulysses22 & 7709 & 5.29E-5 & 9.92
-		\\
-		\hline
-	\end{tabular}
-	\caption{Risultati dell'algoritmo \texttt{Heuristic}}
-\end{table}
+L'algoritmo opera con l'assunzione che il grafo dato rispetti la disuguaglianza triangolare, inserendo iterativamente un nodo $k$ all'interno del circuito parziale per la soluzione a TSP per $n-2, n=|V|$ volte con $V$ l'insieme dei nodi del grafo. In particolare, dato $k \notin C \subseteq V$, con $C$ l'insieme dei nodi nel circuito parziale, e i nodi $u,v \in C$ \mbox{t.c.} $(u,v)\in P$, con $P$ l'insieme dei lati nel circuito parziale, $k$ viene scelto ed inserito nel circuito parziale tra i nodi $u$ e $v$ minimizzando: $w(u,k)+w(k,v)-w(u,v)$.
+
+La complessità dell'algoritmo si può calcolare analizzando i tre cicli \texttt{for} nell'algoritmo. Il ciclo più esterno viene eseguito $n-2$ volte. I due cicli più interni scorrono tutti i nodi $k \notin C$ e i lati $(u,v)\in P$. \'E possibile vedere come, ad ogni iterazione del ciclo \texttt{for} più esterno il numero di iterazioni dei due cicli più in interni, rispettivamente diminuiscano ed aumentino; in particolare il numero totale di iterazioni compiute dai tre cicli \texttt{for} è: $\sum_{i=2}^{n-1} (n-i)i=\frac{1}{6}(n^3-7n+6)$. Dunque l'algoritmo \texttt{CheapestInsertion} possiede una complessità di \comp{n^3}.
+Questo risultato risulta evidente analizzando i tempi di risoluzione dei vari grafi in Tabella~\ref{results}, il quale aumenta esponenzialmente all'aumentare della taglia del grafo, passando dai ~0.004 s per un grafo da 100 nodi, a ~7.5 s per un grafo da 1000 nodi.
+
+L'algoritmo è 2-approssimato per TSP, anche se nei grafi forniti l'errore relativo massimo è del 22\%, dimostrando dunque di essere molto efficace.

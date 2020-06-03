@@ -44,7 +44,7 @@ Le componenti del modello, vale a dire le classi presenti all'interno del \textt
 	\begin{itemize}
 		\item \texttt{copyWithoutV}: funzione \textit{utility} di \texttt{HeldKarpCore} che serve a ricreare l'insieme $S\setmin \{v\}$, necessaria all'algoritmo di Held e Karp per proseguire con le chiamate ricorsive;
 		\item \texttt{getResults}: funzione che ritorna $\left(d[0,V], T\right)$, cioè il valore del ciclo hamiltoniano di costo minimo disponibile dopo $T$ minuti di computazione;
-		\item \texttt{preorder}: metodo utilizzato per l'algoritmo di 2-approssimazione \textit{Tree\_TSP}, per ottenere una lista pre-ordinata dei nodi del MST ottenuto dal metodo \texttt{Kruskal}.
+		\item \texttt{preorder}: metodo utilizzato per l'algoritmo di 2-approssimazione \textit{TrangularTSP}, per ottenere una lista pre-ordinata dei nodi del MST ottenuto dal metodo \texttt{Kruskal}.
 	\end{itemize}
 	\textit{TSP} contiene inoltre tre campi dati, utilizzati dall'algoritmo \texttt{HeldKarp}:
 	\begin{itemize}
@@ -55,12 +55,12 @@ Le componenti del modello, vale a dire le classi presenti all'interno del \textt
 \end{itemize} 
 
 \subsection{Algoritmi}
-Il package \texttt{lab2.algorithm} contiene un'unica classe, \texttt{TSP}, che permette di risolvere il problema TSP utilizzando gli algoritmi \texttt{HeldKarp}, \texttt{CheapestInsertion} e \texttt{Tree\_TSP}.
+Il package \texttt{lab2.algorithm} contiene un'unica classe, \texttt{TSP}, che permette di risolvere il problema TSP utilizzando gli algoritmi \texttt{HeldKarp}, \texttt{CheapestInsertion} e \texttt{TrangularTSP}.
 \begin{itemize}
 	\item \texttt{HeldKarp}: funzione adibita all'inizializzazione e alla chiamata dell'algoritmo di Held e Karp. Si occupa di preparare l'ambiente necessario alla funzione \texttt{HeldKarpCore} e di catturare eventuali eccezioni lanciate dalla JVM\footnote{Java Virtual Machine} dovute alla mancanza di memoria (\texttt{OutOfMemoryException});
 	\item \texttt{HeldKarpCore}: funzione principale che implementa l'algoritmo di Held e Karp, del tutto coerente con lo pseudocodice visto a lezione. L'unica differenza è, naturalmente, la gestione degli \textit{interrupt}: se una certa istanza di TSP dovesse metterci più del tempo a disposizione $T$\footnote{come avviene nella maggior parte dei casi}, l'algoritmo interrompe immediatamente ogni ulteriore visita del grafo lasciando comunque l'opportunità di memorizzare i risultati finora calcolati. Questo comporta, a volte, un ritardo sui tempi di computazione consentiti: ciò non è visto dagli studenti come un problema poiché, di fatto, la computazione viene interrotta quindi non si è in presenza di alcun \textit{cheat}.
 	\item \texttt{CheapestInsertion}: l'algoritmo fa uso del metodo \texttt{getMinAdjacentVertexWeightIndex} per trovare il lato col peso minore che ha come estremo il nodo 0. Viene dunque creato un array di nodi che rappresenta il cammino per TSP ed un array coi nodi ancora non visitati. L'algoritmo dunque esegue un ciclo fino a quando il cammino non raggiunge lunghezza $n+1$ ed trova per ogni nodo non visitato e per ogni lato presente nel cammino trovato fino a quel momento, il minore \texttt{minCost}, indicando che nodo k non visitato deve essere inserito nel cammino e in che posizione. L'algoritmo ha complessità \comp{n^3};
-	\item \texttt{Tree\_TSP}: l'algoritmo, attraverso l'algoritmo \textit{Kruskal}, ottiene prima il MST sotto forma di \textit{Node}, un nodo che possiede la lista di puntatori ai nodi figli, dopodiché ottiene la lista pre-oridinata dei nodi dell'albero ottenuto. L'algoritmo ha complessità \comp{m\lg n + n}.
+	\item \texttt{TrangularTSP}: l'algoritmo, attraverso l'algoritmo \textit{Kruskal}, ottiene prima il MST sotto forma di \textit{Node}, un nodo che possiede la lista di puntatori ai nodi figli, dopodiché ottiene la lista pre-oridinata dei nodi dell'albero ottenuto. L'algoritmo ha complessità \comp{m\lg n + n}.
 \end{itemize}
 
 \subsection{Main}
@@ -74,7 +74,7 @@ Il package \texttt{lab1.main} contiene la classe \texttt{Main}, responsabile del
 		\item \texttt{Heuristic} per l'algoritmo di 2-approssimazione che sfrutta l'euristica strutturale della disuguaglianza triangolare;
 		\item \texttt{2Approx} l'algoritmo che attraverso il calcolo del MST calcola una soluzione per TSP con 2-approssimazione.
 	\end{itemize}
-    \item la funzione \texttt{test}, che esegue alcuni, banali, test sulle strutture dati o algoritmi utilizzati come \textit{AdjacentMatrix} e \textit{Kruskal}.
+    \item la funzione \texttt{test}, che esegue alcuni, banali, test sugli algoritmi utilizzati come \textit{Kruskal}.
     \item le funzioni \texttt{printHeapInfo} e \texttt{formatSize} che sono adibite, rispettivamente, a fornire informazioni e rappresentare l'utilizzo di memoria degli algoritmi.
 \end{itemize}
 
