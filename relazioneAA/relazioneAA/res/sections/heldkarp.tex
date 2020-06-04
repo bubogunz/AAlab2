@@ -75,5 +75,26 @@ Per capire dunque quale dei due algoritmi sia più efficiente ed efficace, è po
 
 \newpage
 \section{Descrizione degli algoritmi}
+\subsection{HeldKarp}
+Le strutture dati utilizzate dall'algoritmo \texttt{HeldKarp} sono essenzialmente 3:
+\begin{itemize}
+	\item \texttt{AdjacentMatrix}, cioè la matrice di adiacenza dei nodi dell'istanza di TSP, trattata come matrice $n\times n$ simmetrica alla diagonale ma implementata come matrice diagonale superiore come specificato in \S\ref{adjmat};
+	\item \texttt{Pair<Integer, ArrayList<Integer>} letteralmente la chiave $<\!\!d,S\!\!>$ che consiste nella coppia di valori di tipo \texttt{Integer} e \texttt{ArrayList<Integer>}, che rappresentano rispettivamente il nodo-destinazione e l'insieme di nodi da visitare, partendo dal nodo 0 e finendo al nodo-destinazione appena illustrato;
+	\item \texttt{HashMap<Pair<Integer, ArrayList<Integer>>, Integer>}, che mappa a coppia $<\!\!d,S\!\!>$ di cui sopra ad un valore di tipo \texttt{Integer}. Questa struttura dati serve a rappresentare due entità fondamentali per l'algoritmo \texttt{HeldKarp}:
+	\begin{itemize}
+		\item \texttt{d}, rappresentata da $d[v,S]$ nello pseudocodice e descritta in \ref{adjmat};
+		\item \texttt{pi}, rappresentata da $\pi[v,S]$ nello pseudocodice e descritta in \ref{adjmat}.
+	\end{itemize}
+\end{itemize}
+
+L'algoritmo parte formando l'insieme dei nodi di partenza $V$, cioè tutti i nodi dell'istanza di TSP e invocando \texttt{HeldKarpCore}.\eqcapo
+
+L'algoritmo \texttt{HeldKarpCore} è il vero e proprio algoritmo di Held e Karp. Dopo aver gestito i casi base in tempo \comp{1}, costruisce l'insieme $S\setmin \{v\}$ indicato nel codice con il nome di \texttt{S\_new} in tempo \comp{n-1} = \comp{n}.\eqcapo
+
+A questo punto esaminiamo il ciclo \texttt{for}. Esso, tolte le chiamate ricorsive, itera su tutti i vertici in $S\setmin \{v\}$ e quindi impiega un tempo \comp{n}. Analizzando ora le chiamate ricorsive, si osserva che terminano immediatamente quando la coppia $<\!\!v, S\!\!>\ \in d$, ovvero quando\\ \texttt{d.containsKey(Pair<v,S>) = true}: questo ci fa dedurre che le chiamate ricorsive che eseguono \texttt{HeldKarpCore} casi base esclusi, è limitato superiormente dal numero di elementi indicizzati in \texttt{d}. Questo numero risulta essere $\leq |V|\cdot 2^{|V|}$, con $|V|$: numero di nodi dell'istanza di TSP.\eqcapo
+Indicando con $n$ la quantità $|V|$ e tenendo conto anche del tempo necessario alla costruzione dell'insieme $S\setmin \{v\}$, possiamo quindi affermare che il tempo totale impiegato da \texttt{HeldKarpCore} è pari a 
+\comp{n+n}$\cdot$\comp{n\cdot 2^n} = \comp{(2n)\cdot n \cdot 2^n} = \comp{n^2\cdot 2^n}
+\image{0.95}{heldkarp}{Snippet degli algoritmi \texttt{HeldKarp} ed \texttt{HeldKarpCore}}
+
 \input{./res/sections/Heuristic}
 \input{./res/sections/2approx}

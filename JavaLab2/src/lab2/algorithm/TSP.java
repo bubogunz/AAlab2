@@ -30,7 +30,7 @@ public class TSP {
 	}
 
 	/**
-	 * Finds the exat solution for TSP problem in O(n^2*2^n)
+	 * Finds the exact solution for TSP problem in O(n^2*2^n)
 	 * @return cost of path of the solution
 	*/
 	public void HeldKarp() {
@@ -47,15 +47,6 @@ public class TSP {
 			System.out.println();
 		}
 	} 
-
-	private ArrayList<Integer> copyWithoutV(ArrayList<Integer> old, Integer v){
-		ArrayList<Integer> ret = new ArrayList<Integer>(old.size());
-		for(Integer item : old)
-			if(!item.equals(v)) 
-				ret.add(item);
-			
-		return ret;
-	}
 
 	private Integer HeldKarpCore(Integer v, ArrayList<Integer> S){
 		if(S.size() == 1 && S.contains(v)) 
@@ -84,6 +75,16 @@ public class TSP {
 		return mindist;
 	}
 
+
+	private ArrayList<Integer> copyWithoutV(ArrayList<Integer> old, Integer v){
+		ArrayList<Integer> ret = new ArrayList<Integer>(old.size());
+		for(Integer item : old)
+			if(!item.equals(v)) 
+				ret.add(item);
+			
+		return ret;
+	}
+	
 	public static void printHeapInfo() {
 
 		long heapSize = Runtime.getRuntime().totalMemory(); 
