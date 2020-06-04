@@ -137,16 +137,3 @@ Crediamo che, alla luce di quanto detto finora, sia il caso di chiederci: vale l
 		\item $ n\geq 52$ allora assegnare più tempo a \texttt{HeldKarp} \textbf{sicuramente non conviene}, perché abbiamo sperimentato che, per ogni istanza di TSP, risultati migliori si possono ottenere impiegando l'euristica \texttt{CheapestInsertion}.
 	\end{itemize}
 \end{itemize}
-
-\subsection{CheapestInsertion e TriangularTSP}
-Entrambi gli algoritmi sono una 2-approssimazione per TSP, ma riportano risultati differenti: \texttt{CheapestInsertion} richiede più tempo per essere eseguito rispetto a \texttt{TriangularTSP}, ma ottiene un errore relativo minore.\acapo 
-Per capire dunque quale dei due algoritmi sia più efficiente ed efficace, è possibile osservare gli istogrammi in Figura~\ref{confronto} che mostrano prima la differenza del tempo di esecuzione dei due algoritmi su scala logaritmica per i vari grafi, poi il tempo di esecuzione su una scala normale ed infine il rispettivo errore relativo. Confrontando il primo e terzo istogramma è possibile vedere come per un aggiunta di tempo di computazione relativamente basso si ottiene un notevole miglioramento per l'errore relativo, infatti \texttt{TriangularTSP} raggiunge in media un errore relativo più alto ($\sim$32\%) rispetto a \texttt{CheapestInsertion} ($\sim$16\%). Se si osserva il secondo istogramma si può vedere come con grafi di taglia maggiore il tempo di esecuzione per \texttt{CheapestInsertion} aumenti esponenzialmente rispetto a \texttt{TriangularTSP}, basti osservare il tempo di esecuzione per i grafi \textit{d449} e \textit{dsj1000}. \acapo
-
-Dunque per grafi di grande taglia è consigliabile utilizzare \texttt{TriangularTSP}, altrimenti \texttt{CheapestInsertion}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{confronto}
-	\caption{Confronto tra \texttt{CheapestInsertion} e \texttt{TriangularTSP}}
-	\label{confronto}
-\end{figure}

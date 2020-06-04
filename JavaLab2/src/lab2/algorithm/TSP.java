@@ -153,7 +153,7 @@ public class TSP {
 	 * Finds the 2-approximate solution for TSP problem in O(mlog n + n)
 	 * @return cost of path of the solution
 	*/
-    public int TriangularTSP(){
+    public int TriangleTSP(){
         Node tree = Kruskal();//O(mlog n)
         int cost = 0;
         ArrayList<Integer> path = preorder(tree, new ArrayList<Integer>());//O(n)

@@ -193,7 +193,7 @@ public class Main {
 					cost = tsp.CheapestInsertion();
 					break;
 				case "2Approx":
-					cost = tsp.TriangularTSP();
+					cost = tsp.TriangleTSP();
 					break;
 				default:
 					throw new InvalidParameterException("Wrong choice of algorithm");	

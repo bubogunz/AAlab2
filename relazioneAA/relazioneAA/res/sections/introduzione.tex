@@ -15,8 +15,8 @@ Il presente documento descrive le scelte architetturali ed implementative del se
 Gli algoritmi da implementare per risolvere il problema rientrano in tre categorie:
 \begin{enumerate}
 	\item \textbf{Algoritmi esatti}, ovvero l'algoritmo di \textbf{Held e Karp}\footnote{d'ora in poi \texttt{HeldKarp}} che ritorna la soluzione esatta del problema TSP con complessità \comp{n^2 2^n};
-	\item \textbf{Euristiche costruttive}, cioè algoritmi che non possono dare nessun vincolo sulla soluzione ritornata. Essi arrivano alla soluzione procedendo un vertice alla volta seguendo delle regole prefissate. In particolar modo vedremo l'euristica \textbf{Cheapest Insertion}\footnote{d'ora in poi \texttt{CheapestInsertion}} che, in caso la disuguaglianza triangolare venga rispettata, si dimostra approssimare la soluzione al più di un fattore 2. Generalmente, quando la disuguaglianza triangolare non viene rispettata, è possibile dimostrare che questo algoritmo permette di trovare una soluzione $\log (n)$-approssimata a TSP.
-	\item \textbf{Algoritmo 2-approssimato}, cioè un algoritmo di approssimazione che può ritornare una soluzione al più 2 volte peggiore di quella ritornata da un algoritmo esatto. Dato che la disuguaglianza triangolare viene rispettata, vedremo l'algoritmo \textbf{Triangle TSP}\footnote{d'ora in poi \texttt{TriangeTSP}} che risolve il problema TSP con un algoritmo 2-approssimato attraverso la costruzione di un MST\footnote{\emph{Minimum Spanning Tree}}.
+	\item \textbf{Euristiche costruttive}, cioè algoritmi che non possono dare nessun vincolo sulla soluzione ritornata. Essi arrivano alla soluzione procedendo un vertice alla volta seguendo delle regole prefissate. In particolar modo vedremo l'euristica \textbf{Cheapest Insertion}\footnote{d'ora in poi \texttt{CheapestInsertion}} che, in caso la disuguaglianza triangolare venga rispettata, si dimostra approssimare la soluzione al più di un fattore 2. Generalmente, l'utilizzo di tale euristica permette di trovare una soluzione $\log (n)$-approssimata a TSP.
+	\item \textbf{Algoritmo 2-approssimato}, cioè un algoritmo di approssimazione che può ritornare una soluzione al più 2 volte peggiore di quella ritornata da un algoritmo esatto. Dato che la disuguaglianza triangolare viene rispettata, vedremo l'algoritmo \textbf{Triangle TSP}\footnote{d'ora in poi \texttt{TriangleTSP}} che risolve il problema TSP con un algoritmo 2-approssimato attraverso la costruzione di un MST\footnote{\emph{Minimum Spanning Tree}}.
 \end{enumerate}
  Infine, verranno esposti ed adeguatamente discussi i risultati ottenuti.
  
@@ -64,7 +64,7 @@ Il package \texttt{lab2.algorithm} contiene un'unica classe, \texttt{TSP}, che p
 \end{itemize}
 
 \subsection{Main}
-Il package \texttt{lab1.main} contiene la classe \texttt{Main}, responsabile dell'esecuzione degli algoritmi. All'interno vi sono tre funzioni:
+Il package \texttt{lab2.main} contiene la classe \texttt{Main}, responsabile dell'esecuzione degli algoritmi. All'interno vi sono tre funzioni:
 \begin{itemize}
 	\item la funzione \texttt{Main} che fa partire il calcolo oppure il test del costo della soluzione per TSP secondo l'algoritmo desiderato;
 	\item la funzione \texttt{compute} che si occupa di calcolare il costo della soluzione per TSP di ogni grafo presente nel dataset, di salvarlo in un file di testo e di proseguire al test dello stesso.\\
@@ -86,4 +86,4 @@ Il package \texttt{lab2.test} contiene due classi:
 \end{itemize}
 
 \subsection{Documentazione}
-Il codice, opportunamente commentato, possiede una documentazione auto-generata con la funzionalità \texttt{javadoc}: la si può consultare accedendo alla directory \texttt{JavaProject/doc} ed aprendo il file \texttt{index.html} con il proprio browser preferito. 
+Il codice, opportunamente commentato, possiede una documentazione auto-generata con la funzionalità \texttt{javadoc}: la si può consultare accedendo alla directory \texttt{JavaLab2/doc} ed aprendo il file \texttt{index.html} con il proprio browser preferito. 

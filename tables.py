@@ -70,7 +70,6 @@ if heuristic.mode == "r" and tree.mode == "r":
 
     plt.subplots_adjust(hspace=0.5)
     plt.savefig(os.path.join(os.path.abspath(os.path.dirname(__file__)), f"relazioneAA/relazioneAA/imgs/confronto.png"))
-    plt.show()
 
 
 heuristic.close()
