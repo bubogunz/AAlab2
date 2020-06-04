@@ -29,7 +29,7 @@ public class Main {
 		//dare l'opzione -Xmx8192m per dire alla JVM di riservare 8GB di RAM (serve a HeldKarp) 
 		// printHeapInfo();
 		
-		compute("HeldKarp"); 
+		compute("2Approx"); 
 		// test();
 	}
 

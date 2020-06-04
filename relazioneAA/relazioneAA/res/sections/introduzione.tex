@@ -28,9 +28,7 @@ Per lo svolgimento di questo \emph{assignment}, come per il precedente, è stato
 \end{itemize}
 
 \section{Scelte implementative}
-Come specificato nel precedente paragrafo, nell'implementazione dei tre algoritmi si è cercato di creare meno oggetti possibile usando quasi esclusivamente riferimenti. Questo ha permesso non solo un risparmio in termini di memoria ma anche di prestazioni: nell'implementazione abbiamo infatti cercato di creare strutture dati che risparmiassero quanta più memoria possibile, dato che l'algoritmo \textit{HeldKarp}, oltre ad essere computazionalmente oneroso, richiede anche l'utilizzo di molta memoria. Difatti, nell'eseguire l'esecuzione del \texttt{main}, è necessario richiedere l'utilizzo di più memoria RAM per il corretto funzionamento dell'algoritmo attraverso il flag \texttt{-Xmx6500m}.
-
-Benché il codice sia stato adeguatamente commentato\footnote{come si può vedere dal \texttt{Javadoc}, automaticamente generato e accessibile all'interno della cartella \texttt{JavaLab2/doc/}, aprendo il file \texttt{index.html} con il browser preferito}, di seguito è riportata una \emph{summa} delle caratteristiche di ogni classe implementata che non compaiono nella documentazione, ripartita per \texttt{package}.
+Come specificato nel precedente paragrafo, nell'implementazione dei tre algoritmi si è cercato di creare meno oggetti possibile usando quasi esclusivamente riferimenti. Questo ha permesso non solo un risparmio in termini di memoria ma anche di prestazioni: nell'implementazione abbiamo infatti cercato di creare strutture dati che risparmiassero quanta più memoria possibile, dato che l'algoritmo \textit{HeldKarp}, oltre ad essere computazionalmente oneroso, richiede anche l'utilizzo di molta memoria. Difatti, nell'eseguire l'esecuzione del \texttt{main}, è necessario richiedere l'utilizzo di più memoria RAM per il corretto funzionamento dell'algoritmo attraverso il flag \texttt{-Xmx6500m}. 
 
 \subsection{Modello}
 Le componenti del modello, vale a dire le classi presenti all'interno del \texttt{package} chiamato \texttt{lab2.model}, comprendono tutte le strutture dati utilizzate nella risoluzione dei tre problemi assegnati. 
@@ -84,6 +82,3 @@ Il package \texttt{lab2.test} contiene due classi:
 	\item \texttt{TestTSP} il cui scopo è di testare la bontà delle soluzioni ritornate con i tre algoritmi sviluppati e di calcolarne l'eventuale errore relativo;
 	\item \texttt{TestKruskal} che è servita per testare il funzionamento dell'algoritmo di \textit{Kruskal}.
 \end{itemize}
-
-\subsection{Documentazione}
-Il codice, opportunamente commentato, possiede una documentazione auto-generata con la funzionalità \texttt{javadoc}: la si può consultare accedendo alla directory \texttt{JavaLab2/doc} ed aprendo il file \texttt{index.html} con il proprio browser preferito. 

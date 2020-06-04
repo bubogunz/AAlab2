@@ -57,7 +57,7 @@ Commentate i risultati che avete ottenuto: come si comportano gli algoritmi risp
 	\end{itemize}
 	\item \textbf{Quale dei tre algoritmi che avete implementato è più efficiente?}
 	\begin{itemize}
-		\item Considerando il termine \quotes{efficienza} ed il suo significato in campo informatico, inteso come la capacità di utilizzare meno risorse\footnote{tempo di utilizzo della CPU e memoria} possibile durante la sua esecuzione, l'algoritmo più efficiente si rivela essere \texttt{TriangleTSP} perché è corretto rispetto al vincolo di 2-approssimazione ed impiega meno risorse di \texttt{CheapestInsertion}. Quest'ultimo, tuttavia, riesce a trovare una soluzione quasi il doppio più accurata del primo, come è possibile vedere a Figura~\ref{confronto}, a fronte dell'utilizzo di risorse più che accettabili per le istanze di TSP fornite. \`{E} per questo che ci sentiamo di dire che l'algoritmo il quale, mediamente, riesce a combinare \textbf{efficienza} ed \textbf{efficacia} meglio di tutti sia proprio \texttt{CheapestInsertion} per le istanza di grafi non troppo grandi. Infatti il tempo di esecuzione per \texttt{CheapestInsertion} aumenta esponenzialmente con l'aumentare della taglia del grafo, non giustificando più la differenza di accuratezza tra \texttt{CheapestInsertion} e \texttt{TringleTSP}.
+		\item Considerando il termine \quotes{efficienza} ed il suo significato in campo informatico, inteso come la capacità di utilizzare meno risorse\footnote{tempo di utilizzo della CPU e memoria} possibile durante la sua esecuzione, l'algoritmo più efficiente si rivela essere \texttt{TriangleTSP} perché è corretto rispetto al vincolo di 2-approssimazione ed impiega meno risorse di \texttt{CheapestInsertion}. Quest'ultimo, tuttavia, riesce a trovare una soluzione quasi il doppio più accurata del primo, come è possibile vedere a Figura~\ref{confronto}, a fronte dell'utilizzo di risorse più che accettabili per le istanze di TSP fornite, come si può vedere nella tabella \ref{tab} per quanto riguarda il tempo di utilizzo della CPU e nella sezione \ref{mem} per quanto riguarda l'utilizzo di memoria. \`{E} per questo che ci sentiamo di dire che l'algoritmo il quale, mediamente, riesce a combinare \textbf{efficienza} ed \textbf{efficacia} meglio di tutti sia proprio \texttt{CheapestInsertion} per le istanza di grafi non troppo grandi. Infatti il tempo di esecuzione per \texttt{CheapestInsertion} aumenta esponenzialmente con l'aumentare della taglia del grafo, non giustificando più la differenza di accuratezza tra \texttt{CheapestInsertion} e \texttt{TriangleTSP}.
 	\end{itemize}
 \end{itemize}
 
@@ -68,10 +68,24 @@ Per capire dunque quale dei due algoritmi sia più efficiente ed efficace, è po
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{confronto}
+	\includegraphics[width=0.93\textwidth]{confronto}
 	\caption{Confronto tra \texttt{CheapestInsertion} e \texttt{TriangleTSP}}
 	\label{confronto}
 \end{figure}
+
+\subsection{Utilizzo di memoria}\label{mem}
+Di seguito, sono riportati alcuni grafici che rappresentano i dati sperimentali relativi all'utilizzo medio di memoria dei tre diversi algoritmi implementati, ripartiti per le istanze di TSP fornite.\vspace{-10pt}
+\mbox{\begin{minipage}{0.6\textwidth}
+\image{1.1}{heldkarp_mem1}{Utilizzo di memoria per l'algoritmo \texttt{HeldKarp} - 1}
+\end{minipage} $\qquad$ \begin{minipage}{0.3\textwidth}
+\image{1.4}{heldkarp_mem2}{Utilizzo di memoria per l'algoritmo \texttt{HeldKarp} - 2}
+\end{minipage}}
+
+\image{1}{cheapestInsertion_mem}{Utilizzo di memoria per l'algoritmo \texttt{CheapestInsertion}}
+
+\image{1}{triangleTSP_mem}{Utilizzo di memoria per l'algoritmo \texttt{TriangleTSP}}
+
+Dai grafici emerge chiaramente che \texttt{HeldKarp} è, mediamente, il più inefficiente ed inefficace dei tre, avendo a disposizione un tempo limitato da concedere all'algoritmo. Dal punto di vista di \texttt{CheapestInsertion} e di \texttt{TriangleTSP}, invece, si può osservare come necessitino, grossomodo, del medesimo quantitativo di memoria. Le differenze, infatti, sono decisamente trascurabili.
 
 \newpage
 \section{Descrizione degli algoritmi}
@@ -94,7 +108,11 @@ L'algoritmo \texttt{HeldKarpCore} è il vero e proprio algoritmo di Held e Karp.
 A questo punto esaminiamo il ciclo \texttt{for}. Esso, tolte le chiamate ricorsive, itera su tutti i vertici in $S\setmin \{v\}$ e quindi impiega un tempo \comp{n}. Analizzando ora le chiamate ricorsive, si osserva che terminano immediatamente quando la coppia $<\!\!v, S\!\!>\ \in d$, ovvero quando\\ \texttt{d.containsKey(Pair<v,S>) = true}: questo ci fa dedurre che le chiamate ricorsive che eseguono \texttt{HeldKarpCore} casi base esclusi, è limitato superiormente dal numero di elementi indicizzati in \texttt{d}. Questo numero risulta essere $\leq |V|\cdot 2^{|V|}$, con $|V|$: numero di nodi dell'istanza di TSP.\eqcapo
 Indicando con $n$ la quantità $|V|$ e tenendo conto anche del tempo necessario alla costruzione dell'insieme $S\setmin \{v\}$, possiamo quindi affermare che il tempo totale impiegato da \texttt{HeldKarpCore} è pari a 
 \comp{n+n}$\cdot$\comp{n\cdot 2^n} = \comp{(2n)\cdot n \cdot 2^n} = \comp{n^2\cdot 2^n}
-\image{0.95}{heldkarp}{Snippet degli algoritmi \texttt{HeldKarp} ed \texttt{HeldKarpCore}}
-
+\begin{figure}[H]
+	\includegraphics[width=.77\textwidth]{heldkarp}
+	\caption{Snippet dell'algoritmo \texttt{HeldKarp}.}
+	\label{confronto}
+\end{figure}
+\image{1}{heldkarp2}{Snippet dell'algoritmo \texttt{HeldKarpCore}}
 \input{./res/sections/Heuristic}
 \input{./res/sections/2approx}

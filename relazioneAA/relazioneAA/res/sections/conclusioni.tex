@@ -105,20 +105,20 @@ ulysses22 & 7013 & 58,3268 & 0,00 \\ \hline
 La variazione del tempo concesso per il calcolo dell'algoritmo \texttt{HeldKarp} non ha avuto alcun miglioramento né peggioramento per sei istanze di TSP su tredici. Per tre di loro, precisamente \texttt{burma14.tsp, ulysses16.tsp e ulysses22.tsp}, questo accade perché la soluzione ottima viene già trovata entro un intervallo di tempo relativamente basso, quindi non considerato perché ritenuto poco interessante: la più \quotes{impegnativa} delle tre, \texttt{ulysses22.tsp}, è in grado di ritornare la soluzione ottima in poco meno di un minuto. Le altre due in meno di un secondo.\eqcapo
 Per quanto riguarda le rimanenti sette istanze di TSP, vale a dire \texttt{ch150.tsp, dsj1000.tsp, eil51.tsp, gr202.tsp, gr229.tsp, kroA100.tsp, kroD100.tsp} invece si è registrato un aumento della qualità della soluzione ritornata, all'aumentare del tempo di computazione concesso. I grafici sottostanti riportano i dati inseriti nelle tabelle di cui sopra, mostrando più chiaramente la differenza degli errori relativi calcolati come $(SoluzioneTrovata - SoluzioneOttima)/SoluzioneOttima$,  ripartito in base alle diverse tempistiche assegnate.
 \paragraph*{ch150.tsp}
-\image{0.7}{ch150}{Variazione dell'errore relativo in ch150}
+\image{0.7}{ch150}{Variazione dell'errore relativo in ch150 in funzione del tempo concesso}
 \paragraph*{dsj1000.tsp}
-\image{0.7}{dsj1000}{Variazione dell'errore relativo in dsj1000}
+\image{0.7}{dsj1000}{Variazione dell'errore relativo in dsj1000 in funzione del tempo concesso}
 \paragraph*{eil51.tsp}
-\image{0.7}{eil51}{Variazione dell'errore relativo in eil51}
+\image{0.7}{eil51}{Variazione dell'errore relativo in eil51 in funzione del tempo concesso}
 \paragraph*{gr202.tsp}
-\image{0.7}{gr202}{Variazione dell'errore relativo in gr202}
+\image{0.7}{gr202}{Variazione dell'errore relativo in gr202 in funzione del tempo concesso}
 \textbf{Nota:} in questo grafico, essendo troppo piccola la variazione, i due valori riportati sull'asse delle ordinate vanno sommati con il numero scritto in notazione scientifica in alto a sinistra.
 \paragraph*{gr229.tsp}
-\image{0.7}{gr229}{Variazione dell'errore relativo in gr229}
+\image{0.7}{gr229}{Variazione dell'errore relativo in gr229 in funzione del tempo concesso}
 \paragraph*{kroA100.tsp}
-\image{0.7}{kroA100}{Variazione dell'errore relativo in kroA100}
+\image{0.7}{kroA100}{Variazione dell'errore relativo in kroA100 in funzione del tempo concesso}
 \paragraph*{kroD100.tsp}
-\image{0.65}{kroD100}{Variazione dell'errore relativo in kroD100}
+\image{0.65}{kroD100}{Variazione dell'errore relativo in kroD100 in funzione del tempo concesso}
 \mbox{}\eqcapo
 
 Come ci si poteva aspettare, concedendo più tempo di computazione all'algoritmo \texttt{HeldKarp}, abbiamo registrato una probabilità non banale che l'algoritmo migliori le sue \emph{performance}: 

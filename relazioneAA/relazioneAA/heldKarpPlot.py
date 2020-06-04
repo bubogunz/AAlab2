@@ -178,3 +178,5 @@ plt.title(dataset[i])
 #plt.savefig("./imgs/" + dataset[i] + ".png")
 plt.show()
 
+
+
